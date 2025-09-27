@@ -17,13 +17,28 @@ public class ReversibleEntityData
     }
 }
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ReversibleEntity : InteractableEntity
 {
     private const int MaxStateHistory = 1200;
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
 
+    protected new Rigidbody2D rigidbody;
     public int ReverseTime { get; private set; } = 0;
     public bool IsReversing => ReverseTime > 0;
+    public virtual bool DestroyableOnReverse => false;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        gameController.AddEntity(this);
+    }
 
     protected override void Update()
     {
@@ -39,6 +54,10 @@ public class ReversibleEntity : InteractableEntity
                 ReversibleEntityData lastState = stateHistory.Last.Value;
                 lastState.Apply(this);
                 stateHistory.RemoveLast();
+            }
+            else if (DestroyableOnReverse)
+            {
+                Destroy(gameObject);
             }
             // Don't record state if reversing
             return;
@@ -58,9 +77,19 @@ public class ReversibleEntity : InteractableEntity
         return new ReversibleEntityData(transform.position);
     }
 
-    public override void Interact()
+    public override void Interact(Player player)
     {
         // Start reversing time for this entity
-        ReverseTime = MaxStateHistory;
+        Reverse(60);
+    }
+
+    public void Reverse(int frames)
+    {
+        ReverseTime = Mathf.Max(ReverseTime, frames);
+    }
+
+    void OnDestroy()
+    {
+        gameController.RemoveEntity(this);
     }
 }

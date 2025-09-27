@@ -12,11 +12,21 @@ public class GameController : MonoBehaviour
         inputActions.Enable();
     }
 
+    public void AddEntity(ReversibleEntity entity)
+    {
+        reversibleEntities.Add(entity);
+    }
+
+    public void RemoveEntity(ReversibleEntity entity)
+    {
+        reversibleEntities.Remove(entity);
+    }
+
     public void ReverseAll(int frames)
     {
         foreach (var entity in reversibleEntities)
         {
-            // entity.Reverse(frames);
+            entity.Reverse(frames);
         }
     }
 }

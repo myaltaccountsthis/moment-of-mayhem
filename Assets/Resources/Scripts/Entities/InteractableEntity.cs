@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class InteractableEntity : Entity
 {
     private Collider2D col;
@@ -7,13 +8,9 @@ public class InteractableEntity : Entity
     {
         base.Awake();
         col = GetComponent<Collider2D>();
-        if (col == null || !col.isTrigger)
-        {
-            Debug.LogError("InteractableEntity requires a Collider2D component with isTrigger set to true.");
-        }
     }
 
-    public virtual void Interact()
+    public virtual void Interact(Player player)
     {
         // Default interaction does nothing
     }
