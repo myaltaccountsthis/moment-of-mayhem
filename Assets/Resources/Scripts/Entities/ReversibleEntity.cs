@@ -108,7 +108,8 @@ public class ReversibleEntity : CollidableEntity
 
     public void Reverse(int timeInFrames)
     {
-        if (IsReversing) return;
+        if (timeInFrames == 0 || IsReversing) return;
+        
         // n + 1 states for n frames of rewind
         stateHistory.AddLast(CaptureState()); 
         ReverseTime = timeInFrames;
