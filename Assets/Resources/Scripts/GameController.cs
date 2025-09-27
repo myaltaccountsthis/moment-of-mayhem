@@ -29,4 +29,12 @@ public class GameController : MonoBehaviour
             entity.Reverse(frames);
         }
     }
+
+    public void OnPlayerDeath()
+    {
+        // Pause game, cover screen, reload scene
+
+        // Restart the scene
+        // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 }

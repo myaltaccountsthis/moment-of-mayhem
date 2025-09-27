@@ -18,6 +18,7 @@ public class CameraSystem : MonoBehaviour
     void Start()
     {
         moveVelocity = Vector2.zero;
+        camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
     }
 
     void LateUpdate()

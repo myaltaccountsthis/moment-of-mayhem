@@ -13,12 +13,12 @@ public class ReversibleEntityData
     // Subclasses must cast to the respective Entity type in the Apply method
     public virtual void Apply(ReversibleEntity entity)
     {
-        entity.transform.position = position;
+        entity.SetRigidbodyPosition(position);
     }
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ReversibleEntity : InteractableEntity
+public class ReversibleEntity : CollidableEntity
 {
     private const int MaxStateHistory = 1200;
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
@@ -43,10 +43,9 @@ public class ReversibleEntity : InteractableEntity
         base.Start();
         gameController.AddEntity(this);
     }
-
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
         if (IsReversing)
         {
@@ -54,7 +53,7 @@ public class ReversibleEntity : InteractableEntity
             float alpha = Mathf.Clamp01((float) reverseElapsedFrames / totalReverseTime);
 
             // Interpolate frame index with easing
-            float val = EaseOutQuad(0f, totalReverseTime, alpha);
+            float val = LeanTween.easeOutQuad(0f, totalReverseTime, alpha);
 
             float idx = Mathf.Clamp(totalFrames - val, 0f, stateHistory.Count - 1);
             int right = Mathf.CeilToInt(idx);
@@ -73,6 +72,12 @@ public class ReversibleEntity : InteractableEntity
             ReverseTime--;
             if (ReverseTime <= 0)
             {
+                if (DestroyableOnReverse)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+
                 totalReverseTime = 0;
                 totalFrames = 0;
                 ReverseTime = 0;
@@ -96,6 +101,7 @@ public class ReversibleEntity : InteractableEntity
 
     public override void Interact(Player player)
     {
+        if (IsReversing) return;
         // Start reversing time for this entity
         Reverse(60);
     }
@@ -103,7 +109,6 @@ public class ReversibleEntity : InteractableEntity
     public void Reverse(int timeInFrames)
     {
         if (IsReversing) return;
-        IsReversing = true;
         // n + 1 states for n frames of rewind
         stateHistory.AddLast(CaptureState()); 
         ReverseTime = timeInFrames;
@@ -112,11 +117,9 @@ public class ReversibleEntity : InteractableEntity
         totalReverseTime = timeInFrames;
     }
 
-    private static float EaseOutQuad(float start, float end, float t)
+    public void SetRigidbodyPosition(Vector3 position)
     {
-        t = Mathf.Clamp01(t);
-        float eased01 = 1f - (1f - t) * (1f - t);
-        return Mathf.LerpUnclamped(start, end, eased01);
+        rigidbody.MovePosition(position);
     }
 
     void OnDestroy()

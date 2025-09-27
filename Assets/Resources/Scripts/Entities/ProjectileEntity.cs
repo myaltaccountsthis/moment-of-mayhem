@@ -1,7 +1,69 @@
 using UnityEngine;
 
-public class ProjectileEntity : DamagePart
+public class ProjectileEntityData : ReversibleEntityData
 {
+    public float lifetime;
+
+    public ProjectileEntityData(Vector3 pos, float lifetime) : base(pos)
+    {
+        this.lifetime = lifetime;
+    }
+
+    public override void Apply(ReversibleEntity entity)
+    {
+        base.Apply(entity);
+        ProjectileEntity projectile = entity as ProjectileEntity;
+        projectile.lifetime = lifetime;
+    }
+}
+
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
+public class ProjectileEntity : ReversibleEntity
+{
+    [SerializeField] private float speed = 5f;
+    [SerializeField] internal float lifetime = 5f;
+    [SerializeField] private float damage = 10f;
     public override bool DestroyableOnReverse => true;
 
+    private Rigidbody2D rb;
+    private bool hasCollided;
+
+    protected override void Start()
+    {
+        base.Start();
+        hasCollided = false;
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = transform.up * speed;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (IsReversing) return;
+
+        lifetime -= Time.deltaTime;
+        if (lifetime <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    protected override void OnPlayerCollide(Player player)
+    {
+        if (IsReversing) return;
+        // Prevent multiple collisions
+        if (hasCollided)
+            return;
+        hasCollided = true;
+
+        player.TakeDamage(damage);
+        Destroy(gameObject);
+    }
+
+    protected override ReversibleEntityData CaptureState()
+    {
+        return new ProjectileEntityData(transform.position, lifetime);
+    }
 }
