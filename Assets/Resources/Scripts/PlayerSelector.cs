@@ -27,6 +27,7 @@ public class PlayerSelector : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     // Call interact on entity
+                    
                 }
             }
             Debug.Log("Mouse is hovering over: " + hoveredObject.name);

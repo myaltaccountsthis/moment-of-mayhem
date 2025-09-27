@@ -17,7 +17,7 @@ public class ReversibleEntityData
     }
 }
 
-public class ReversibleEntity : Entity
+public class ReversibleEntity : InteractableEntity
 {
     private const int MaxStateHistory = 1200;
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
@@ -56,5 +56,11 @@ public class ReversibleEntity : Entity
     protected virtual ReversibleEntityData CaptureState()
     {
         return new ReversibleEntityData(transform.position);
+    }
+
+    public override void Interact()
+    {
+        // Start reversing time for this entity
+        ReverseTime = MaxStateHistory;
     }
 }
