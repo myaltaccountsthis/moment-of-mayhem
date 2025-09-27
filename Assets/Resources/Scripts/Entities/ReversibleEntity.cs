@@ -19,7 +19,7 @@ public class ReversibleEntityData
 
 public class ReversibleEntity : Entity
 {
-    private const int MAX_STATE_HISTORY = 1200;
+    private const int MaxStateHistory = 1200;
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
 
     public int ReverseTime { get; private set; } = 0;
@@ -47,7 +47,7 @@ public class ReversibleEntity : Entity
         // Add current state to history
         stateHistory.AddLast(CaptureState());
         // Remove first state if we exceed max history size
-        while (stateHistory.Count > MAX_STATE_HISTORY)
+        while (stateHistory.Count > MaxStateHistory)
         {
             stateHistory.RemoveFirst();
         }
