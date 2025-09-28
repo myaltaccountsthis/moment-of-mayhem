@@ -14,6 +14,7 @@ public class FiringDevice : CollidableEntity, IInteractable
     [SerializeField] private Sprite inactiveSprite;
     [SerializeField] private Sprite readySprite;
     [SerializeField] private Sprite shootingSprite;
+    [SerializeField] private Sprite shootingSprite2;
     private Sprite normalSprite;
 
     private bool isSlowed = false;
@@ -58,6 +59,7 @@ public class FiringDevice : CollidableEntity, IInteractable
 
     IEnumerator firing()
     {
+        int ct = 0;
         while (true)
         {
             if (enabled)
@@ -72,7 +74,8 @@ public class FiringDevice : CollidableEntity, IInteractable
             // AudioSource audio = Instantiate(fireSound, transform.position, Quaternion.identity);
             // audio.Play();
             // Destroy(audio.gameObject, audio.clip.length);
-            spriteRenderer.sprite = shootingSprite;
+            spriteRenderer.sprite = shootingSprite2 is null ? shootingSprite : (ct % 2 == 0 ? shootingSprite : shootingSprite2);
+            ct++;
 
             yield return WaitDynamic(() => CurrentDelay / 2f);
 
