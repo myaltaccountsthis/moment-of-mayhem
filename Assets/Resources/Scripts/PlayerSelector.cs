@@ -7,7 +7,8 @@ public class PlayerSelector : MonoBehaviour
     public SpriteRenderer selectionBox;
     public bool canSelectSelf = false;
 
-    private const float InteractsPerSecond = 20f;
+    private const float InteractsPerSecond = 10f;
+    private const float CircleRadius = 0.3f;
 
     private Player player;
     private GameController gameController;
@@ -50,7 +51,7 @@ public class PlayerSelector : MonoBehaviour
             int interactableMask = canSelectSelf ? LayerMask.GetMask("Interactable", "Player") : LayerMask.GetMask("Interactable");
             // Perform raycast for interactable entities
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            RaycastHit2D hit = Physics2D.CircleCast(mouseWorldPos, 0.25f, Vector2.zero, 0f, interactableMask);
+            RaycastHit2D hit = Physics2D.CircleCast(mouseWorldPos, CircleRadius, Vector2.zero, 0f, interactableMask);
             if (hit.collider != null && hit.collider.TryGetComponent(out Entity entity) && entity is IInteractable interactable)
             {
                 // Check if the ray hit a collider
@@ -58,7 +59,7 @@ public class PlayerSelector : MonoBehaviour
 
                 if (clickAction.triggered && interactCooldown <= 0f)
                 {
-                    Debug.Log($"Interacting with {entity.name}");
+                    // Debug.Log($"Interacting with {entity.name}");
                     interactable.Interact(player);
                     interactCooldown = 1f / InteractsPerSecond;
                 }
@@ -97,7 +98,7 @@ public class PlayerSelector : MonoBehaviour
             float maxSize = Mathf.Max(bounds.size.x, bounds.size.y);
             selectionBox.transform.localScale = new Vector3(maxSize, maxSize, 1) * 1.25f; // OK since selection box is global
             selectionBox.enabled = true;
-            Debug.Log("Selected entity: " + selectedEntity.name);
+            // Debug.Log("Selected entity: " + selectedEntity.name);
         }
     }
 }

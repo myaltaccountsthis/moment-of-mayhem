@@ -17,6 +17,7 @@ public class Boss : DamagePart
     private BossPhase phase = BossPhase.Phase1;
     private int currentDifficulty = 0;
 
+    private bool canAttack;
     private int currentAttackIndex;
     private float timeUntilNextAttack;
     private BossAttack currentAttack;
@@ -30,6 +31,8 @@ public class Boss : DamagePart
     protected override void Start()
     {
         base.Start();
+
+        canAttack = true;
         currentAttackIndex = 0;
         timeUntilNextAttack = 3f;
         currentAttack = attacks[0];
@@ -38,6 +41,8 @@ public class Boss : DamagePart
     protected override void Update()
     {
         base.Update();
+
+        if (!canAttack) return;
 
         if (timeUntilNextAttack > 0)
         {
@@ -63,6 +68,7 @@ public class Boss : DamagePart
 
     public void AdvancePhase()
     {
+        canAttack = false;
         if (phase == BossPhase.Phase1)
             phase = BossPhase.Phase2;
         else if (phase == BossPhase.Phase2)
@@ -70,9 +76,20 @@ public class Boss : DamagePart
         else if (phase == BossPhase.Phase3)
         {
             Debug.Log("Player wins");
+            return;
         }
 
-        currentDifficulty = (int)phase * DifficultiesPerPhase;
+        int newPhase = (int)phase;
+        currentDifficulty = newPhase * DifficultiesPerPhase;
         Debug.Log("Boss advanced to phase: " + phase);
+
+        gameController.FadeToBlack(2).setOnComplete(() =>
+        {
+            // TODO change tilemap
+
+            canAttack = true;
+            timeUntilNextAttack = 3f;
+            gameController.FadeFromBlack(2);
+        });
     }
 }

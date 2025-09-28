@@ -1,23 +1,24 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 class Maelstrom : BossAttack
 {
-    private const float DefaultLifetime = 100f;
+    private const float DefaultLifetime = 1000f;
     private static readonly WaitForSeconds _waitForSeconds2 = new(2);
     [SerializeField] private ProjectileEntity bulletPrefab;
     private List<ProjectileEntity> bullets;
 
-    public float fireRatePerDirection = 2f;
-    public int bulletCountPerDirection = 10;
-    public int numDirections = 8;
-    public float bulletSpeed = 5f;
-    public float bulletDamage = 1f;
-    public float rotationSpeed = -38f; // degrees per second
-    public float minDistance = 15f, maxDistance = 30f;
-    public float MaxDelayBeforeReverse => maxDistance / (bulletSpeed * 2f * SpeedFactor);
+    private const float FireRatePerDirection = 2f;
+    private const int BulletCountPerDirection = 8;
+    private const int NumDirections = 7;
+    private const float BulletSpeed = 4f;
+    private const float BulletDamage = 3f;
+    private const float RotationSpeed = -41f; // degrees per second
+    private const float MinDistance = 15f, MaxDistance = 20f;
+    public float MaxDelayBeforeReverse => MaxDistance / (BulletSpeed * 2f * SpeedFactor);
 
     void Start()
     {
@@ -27,29 +28,29 @@ class Maelstrom : BossAttack
     protected override IEnumerator Execute()
     {
         // Implementation of the Maelstrom attack
-        int bulletsLeftPerDirection = Mathf.FloorToInt(bulletCountPerDirection * CountFactor);
+        int bulletsLeftPerDirection = Mathf.FloorToInt(BulletCountPerDirection * CountFactor);
         float rotation = 0f;
-        float bulletSpeed = this.bulletSpeed * SpeedFactor;
-        float rotationSpeed = this.rotationSpeed * SpeedFactor;
-
+        float bulletSpeed = BulletSpeed * SpeedFactor;
+        float rotationSpeed = RotationSpeed * SpeedFactor;
 
         int bulletsDone = 0;
         while (bulletsLeftPerDirection > 0)
         {
-            float angleStep = 360f / numDirections;
-            for (int i = 0; i < numDirections; i++)
+            float angleStep = 360f / NumDirections;
+            for (int i = 0; i < NumDirections; i++)
             {
                 float angle = i * angleStep + rotation;
                 Vector3 direction = new(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
 
                 ProjectileEntity bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                bullet.damage = bulletDamage * DamageFactor;
+                bullet.transform.localScale *= SizeFactor;
+                bullet.damage = BulletDamage * DamageFactor;
                 bullet.speed = bulletSpeed;
                 bullet.transform.up = direction;
                 bullet.lifetime = DefaultLifetime;
                 bullets.Add(bullet);
 
-                float timeUntilFreeze = Random.Range(minDistance, maxDistance) / bulletSpeed;
+                float timeUntilFreeze = Random.Range(MinDistance, MaxDistance) / bulletSpeed;
                 LeanTween.delayedCall(timeUntilFreeze, () =>
                 {
                     if (bullet != null)
@@ -59,8 +60,8 @@ class Maelstrom : BossAttack
             }
             bulletsLeftPerDirection--;
 
-            rotation += rotationSpeed / fireRatePerDirection;
-            yield return new WaitForSeconds(1f / fireRatePerDirection);
+            rotation += rotationSpeed / FireRatePerDirection;
+            yield return new WaitForSeconds(1f / FireRatePerDirection);
         }
 
         yield return new WaitUntil(() => bulletsDone >= bullets.Count); // Wait for a moment before reversing
@@ -72,18 +73,16 @@ class Maelstrom : BossAttack
         {
             if (bullet == null) continue; // Bullet might have been destroyed already if player reversed
 
-            float myDelay = Random.Range(minDistance, maxDistance) / (bulletSpeed * 2f);
-            float myLifetime = Vector2.Distance(bullet.transform.position, transform.position) / (bulletSpeed * 2f); // Adjust lifetime for reverse
+            float myDelay = Random.Range(0, MaxDistance) / (bulletSpeed * 2f);
             LeanTween.delayedCall(bullet.gameObject, myDelay, () =>
             {
                 bullet.SetSpeed(-bulletSpeed * 2); // Reverse and double speed
-                bullet.lifetime = myLifetime;
+                bullet.lifetime = 10;
             });
-            longestWait = Mathf.Max(longestWait, myLifetime + myDelay);
+            longestWait = Mathf.Max(longestWait, myDelay);
         }
-        Debug.Log("Reversing all bullets with longest wait: " + longestWait);
 
-        yield return new WaitForSeconds(longestWait); // Wait for all bullets to finish reversing
+        yield return new WaitForSeconds(longestWait + 5f); // Wait for all bullets to finish reversing
 
         bullets.Clear();
         IsAttacking = false;

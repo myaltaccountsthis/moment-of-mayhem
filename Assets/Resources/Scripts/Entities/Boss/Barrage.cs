@@ -10,22 +10,22 @@ class Barrage : BossAttack
     [SerializeField] private Transform projectilePrefab;
     [SerializeField] private DamagePart damagePartPrefab;
 
-    public int projectilesPerBurst = 10;
-    public float timeBetweenBursts = 2f;
-    public int numBursts = 3;
-    public float fireRate = 10f;
-    public float damagePartSize = 1f;
-    public float projectileDuration = 1.5f;
+    private const int ProjectilesPerBurst = 24;
+    private const float TimeBetweenBursts = 2f;
+    private const int NumBursts = 3;
+    private const float FireRate = 16f;
+    private const float DamagePartSize = 1.5f;
+    private const float ProjectileDuration = 1.5f;
 
     protected override IEnumerator Execute()
     {
         // Implementation of the Barrage attack
-        int burstsLeft = Mathf.FloorToInt(numBursts * CountFactor);
-        int projectilesPerBurst = Mathf.FloorToInt(this.projectilesPerBurst * CountFactor);
-        float timeBetweenBursts = this.timeBetweenBursts / SpeedFactor;
-        float projectileDuration = this.projectileDuration / SpeedFactor;
-        float fireRate = this.fireRate * SpeedFactor;
-        float damagePartSize = this.damagePartSize * DamageFactor;
+        int burstsLeft = Mathf.FloorToInt(NumBursts * CountFactor);
+        int projectilesPerBurst = Mathf.FloorToInt(ProjectilesPerBurst * CountFactor);
+        float timeBetweenBursts = TimeBetweenBursts / SpeedFactor;
+        float projectileDuration = ProjectileDuration / SpeedFactor;
+        float fireRate = FireRate * SpeedFactor;
+        float damagePartSize = DamagePartSize * SizeFactor;
 
         while (burstsLeft > 0)
         {
@@ -37,7 +37,7 @@ class Barrage : BossAttack
                 // Random direction
                 float angle = Random.Range(0f, 360f);
                 // Random radius
-                float radius = Random.Range(5f, 20f);
+                float radius = Random.Range(5f, 15f);
                 Vector3 direction = new(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
                 direction *= radius;
 
