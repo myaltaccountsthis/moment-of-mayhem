@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Player : ReversibleEntity
 {
     private const float MoveSpeed = 5f;
@@ -14,6 +15,7 @@ public class Player : ReversibleEntity
 
     [SerializeField] private RectTransform healthBar;
 
+    private Animator animator;
     private InputAction moveAction;
     private Vector2 inputVector, inputVelocity;
     // Health is "hp bar" in seconds, constantly drains
@@ -23,6 +25,7 @@ public class Player : ReversibleEntity
     {
         base.Awake();
 
+        animator = GetComponent<Animator>();
         moveAction = gameController.inputActions.FindAction("Move");
     }
 
@@ -62,11 +65,13 @@ public class Player : ReversibleEntity
         {
             targetInput.Normalize();
         }
-        inputVector = Vector2.SmoothDamp(inputVector, targetInput, ref inputVelocity, MoveDamping, 10, Time.fixedDeltaTime);
+        inputVector = Vector2.SmoothDamp(inputVector, targetInput, ref inputVelocity, MoveDamping, 20, Time.fixedDeltaTime * 2);
         if (inputVector.sqrMagnitude > 1f)
         {
             inputVector.Normalize();
         }
+        animator.SetFloat("VelocityX", inputVector.x);
+        animator.SetFloat("VelocityY", inputVector.y);
         rigidbody.MovePosition(rigidbody.position + MoveSpeed * Time.fixedDeltaTime * inputVector);
     }
 

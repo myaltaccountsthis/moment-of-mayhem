@@ -87,22 +87,25 @@ public class PlayerSelector : MonoBehaviour
         if (oldEntity != null)
         {
             // Deselect logic here, remove render
-            if (oldEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
-            {
-                // spriteRenderer.material = selectedEntityOriginalMaterial;
-            }
+            // if (oldEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
+            // {
+            // spriteRenderer.material = selectedEntityOriginalMaterial;
+            // }
         }
 
         // Update UI or other game elements to reflect the new selection
         // Implement select logic
         if (selectedEntity != null)
         {
-            if (selectedEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
-            {
-                selectionBox.enabled = true;
-                // selectedEntityOriginalMaterial = spriteRenderer.material;
-                // spriteRenderer.material = outlineMaterial;
-            }
+            Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
+            selectionBox.transform.localScale = bounds.size * 1.25f; // OK since selection box is global
+            selectionBox.enabled = true;
+
+            // if (selectedEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
+            // {
+            // selectedEntityOriginalMaterial = spriteRenderer.material;
+            // spriteRenderer.material = outlineMaterial;
+            // }
         }
     }
 }
