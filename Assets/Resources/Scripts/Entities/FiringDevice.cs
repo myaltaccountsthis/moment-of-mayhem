@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FiringDevice : CollidableEntity, IInteractable
 {
     public ProjectileEntity projectilePrefab;
-    public Vector2 fixedDirection;
+    public Vector2 direction;
     public float mainDelay;
     public float slowedDelay;
-
-    public bool isAiming;
-    public Player target;
+    
     // public AudioSource fireSound;
 
     [SerializeField] private Sprite inactiveSprite;
@@ -29,7 +28,7 @@ public class FiringDevice : CollidableEntity, IInteractable
     protected override void Awake()
     {
         base.Awake();
-        fixedDirection = fixedDirection.normalized;
+        direction = direction.normalized;
         particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
     }
 
@@ -44,15 +43,6 @@ public class FiringDevice : CollidableEntity, IInteractable
     protected override void Update()
     {
         base.Update();
-        if (enabled && isAiming && (target is not null))
-        {
-            transform.up = getTargetDirection();
-        }
-    }
-
-    private Vector2 getTargetDirection()
-    {
-        return (target.transform.position - transform.position).normalized;
     }
 
     private IEnumerator WaitDynamic(System.Func<float> getDuration)
@@ -77,9 +67,6 @@ public class FiringDevice : CollidableEntity, IInteractable
             if (!enabled) continue;
 
             ProjectileEntity proj = Instantiate(projectilePrefab, GetProjectileStartPosition(), Quaternion.identity);
-            Vector2 direction = isAiming && (target is not null)
-                ? getTargetDirection()
-                : fixedDirection;
             proj.transform.up = direction;
 
             // AudioSource audio = Instantiate(fireSound, transform.position, Quaternion.identity);

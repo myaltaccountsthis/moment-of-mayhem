@@ -570,8 +570,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 607178045
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -601,7 +601,7 @@ MonoBehaviour:
   rightPos: {fileID: 4626564664636386502}
   startRight: 0
   oscillationTime: 3
-  slowDuration: 0
+  slowDuration: 3
   slowedTimeScale: 0.25
   isSlowed: 0
   rotationSize: 2880

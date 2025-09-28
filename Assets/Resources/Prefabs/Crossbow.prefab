@@ -360,10 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3519d9f8a52f4926b3d53f1bf43c1d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crossbow
-  projectilePrefab: {fileID: 1515132268249562409, guid: b8126847134e3f34c8fe4d8190fd8e3a, type: 3}
+  projectilePrefab: {fileID: 1515132268249562409, guid: a7e9e95f64d9cad47a8c486febd760a0, type: 3}
   fixedDirection: {x: 0, y: 1}
   mainDelay: 3
-  slowedDelay: 10
+  slowedDelay: 5
   isAiming: 0
   target: {fileID: 0}
   inactiveSprite: {fileID: 1398509373064718150, guid: 136b91820a5790243bf558812da9c4a9, type: 3}
