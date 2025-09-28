@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     {
         foreach (var entity in reversibleEntities)
         {
-            entity.Reverse(frames);
+            entity.Reverse(frames, frames / 2);
         }
     }
 

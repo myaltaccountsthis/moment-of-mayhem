@@ -24,11 +24,13 @@ public class ReversibleEntity : CollidableEntity
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
 
     protected new Rigidbody2D rigidbody;
-    public int ReverseTime { get; private set; } = 0;
-    public bool IsReversing => ReverseTime > 0;
     
+    private int ReverseTime = 0;
+    public bool IsReversing => ReverseTime > 0;
+
     private int totalReverseTime = 0;
-    private int totalFrames = 0;
+    private int totalReverseFrames = 0;
+    private int totalFrameCount = 0;
     
     public virtual bool DestroyableOnReverse => false;
 
@@ -49,13 +51,13 @@ public class ReversibleEntity : CollidableEntity
 
         if (IsReversing)
         {
-            int reverseElapsedFrames = totalReverseTime - ReverseTime;
-            float alpha = Mathf.Clamp01((float) reverseElapsedFrames / totalReverseTime);
+            int elapsedTime = totalReverseTime - ReverseTime;
+            float alpha = Mathf.Clamp01((float)elapsedTime / totalReverseTime);
 
             // Interpolate frame index with easing
-            float val = LeanTween.easeOutQuad(0f, totalReverseTime, alpha);
+            float val = LeanTween.easeOutQuad(0f, totalReverseFrames, alpha);
 
-            float idx = Mathf.Clamp(totalFrames - val, 0f, stateHistory.Count - 1);
+            float idx = Mathf.Clamp(totalFrameCount - 1 - val, 0f, stateHistory.Count - 1);
             int right = Mathf.CeilToInt(idx);
             float delta = 1.0f - (right - idx);
             while (stateHistory.Count > right + 1) stateHistory.RemoveLast();
@@ -79,7 +81,8 @@ public class ReversibleEntity : CollidableEntity
                 }
 
                 totalReverseTime = 0;
-                totalFrames = 0;
+                totalReverseFrames = 0;
+                totalFrameCount = 0;
                 ReverseTime = 0;
             }
             return; // don't record state while reversing
@@ -103,19 +106,20 @@ public class ReversibleEntity : CollidableEntity
     {
         if (IsReversing) return;
         // Start reversing time for this entity
-        Reverse(60);
+        Reverse(60, 30);
     }
 
-    public void Reverse(int timeInFrames)
-    {
-        if (timeInFrames == 0 || IsReversing) return;
-        
+    // reverse timeInFrames: number of frames to rewind
+    // durationInFrames: number of frames over which to perform the rewind (for easing)
+    public void Reverse(int timeInFrames, int durationInFrames) {
+        if (IsReversing) return;
+        timeInFrames = Mathf.Max(1, timeInFrames);
         // n + 1 states for n frames of rewind
         stateHistory.AddLast(CaptureState()); 
-        ReverseTime = timeInFrames;
-        
-        totalFrames = stateHistory.Count;
-        totalReverseTime = timeInFrames;
+        ReverseTime = durationInFrames;
+        totalFrameCount = stateHistory.Count;
+        totalReverseTime = durationInFrames;
+        totalReverseFrames = timeInFrames;
     }
 
     public void SetRigidbodyPosition(Vector3 position)
