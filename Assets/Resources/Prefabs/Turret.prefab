@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f1c19ca2614fd19d2611e503021d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Turret
-  projectilePrefab: {fileID: 1515132268249562409, guid: b8126847134e3f34c8fe4d8190fd8e3a, type: 3}
+  projectilePrefab: {fileID: -8210884451609533128, guid: b8126847134e3f34c8fe4d8190fd8e3a, type: 3}
   direction: {x: 0, y: 0}
   mainDelay: 3
   slowedDelay: 5
