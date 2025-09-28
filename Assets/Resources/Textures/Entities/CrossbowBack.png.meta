@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3712c095585ab1b4b93121a54ab24b35
+guid: b6f95ddc2841bed4b94a28151ea3cc61
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9017722066578424630
-    second: Floor Saw_0
+      213: 6726665094001345014
+    second: CrossbowBack_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Floor Saw_0
+      name: CrossbowBack_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 13
         y: 0
-        width: 64
-        height: 64
+        width: 38
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: acc3462fe8d9ad280800000000000000
-      internalID: -9017722066578424630
+      spriteID: 6f148fa734ae95d50800000000000000
+      internalID: 6726665094001345014
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Floor Saw_0: -9017722066578424630
+      CrossbowBack_0: 6726665094001345014
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

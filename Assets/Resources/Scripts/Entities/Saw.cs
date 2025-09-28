@@ -3,10 +3,12 @@
 public class Saw : OscillatingTrap
 {
     public float rotationSize;
+    public GameObject sawBlade;
+    
     protected override void Awake()
     {
         base.Awake();
-        LeanTween.rotate(gameObject, rotationSize * (startRight ? Vector3.back : Vector3.forward), oscillationTime)
+        LeanTween.rotate(sawBlade, rotationSize * (startRight ? Vector3.forward : Vector3.back), oscillationTime)
             .setEaseInOutSine()
             .setLoopPingPong();
     }

@@ -18,7 +18,6 @@ public class FiringDevice : ReversibleEntity
     [SerializeField] private Sprite readySprite;
     [SerializeField] private Sprite shootingSprite;
     private Sprite normalSprite;
-    private SpriteRenderer spriteRenderer;
     private Coroutine coroutine;
     
     
@@ -49,6 +48,11 @@ public class FiringDevice : ReversibleEntity
     {
         return (target.transform.position - transform.position).normalized;
     }
+    
+    public float GetCurrentDelay()
+    {
+        return IsReversing ? slowedDelay : mainDelay;
+    }
 
     IEnumerator firing()
     {
@@ -57,12 +61,12 @@ public class FiringDevice : ReversibleEntity
             if (enabled)
                 spriteRenderer.sprite = readySprite;
             
-            float delay = IsReversing ? slowedDelay : mainDelay;
+            float delay = GetCurrentDelay();
             yield return new WaitForSeconds(delay / 4);
             if (!enabled) continue;
             
             
-            ProjectileEntity proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            ProjectileEntity proj = Instantiate(projectilePrefab, GetProjectileStartPosition(), Quaternion.identity);
             Vector2 direction = isAiming && (target is not null) 
                 ? getTargetDirection() 
                 : fixedDirection;
@@ -75,10 +79,22 @@ public class FiringDevice : ReversibleEntity
             spriteRenderer.sprite = shootingSprite;
             yield return new WaitForSeconds(delay / 2);
             spriteRenderer.sprite = normalSprite;
+            OnWait(delay / 2);
             yield return new WaitForSeconds(delay / 4);
         }
     }
 
+
+    protected virtual void OnWait(float seconds)
+    {
+        
+    }
+    
+    protected virtual Vector3 GetProjectileStartPosition()
+    {
+        return transform.position;
+    }
+    
     public void SetEnabled(bool enabled)
     {
         this.isEnabled = enabled;
