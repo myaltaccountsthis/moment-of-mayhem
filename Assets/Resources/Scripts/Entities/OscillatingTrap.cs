@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Log : DamagePart
+public class OscillatingTrap : DamagePart
 {
     // Oscillates between two positions
     public Transform leftPos;
