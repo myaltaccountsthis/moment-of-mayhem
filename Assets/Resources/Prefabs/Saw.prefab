@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5704281858207861708}
   - component: {fileID: 8344195701380080485}
   - component: {fileID: 8053289667026050903}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Closed Sprite Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 0.05, z: 1}
+  m_LocalScale: {x: 2.2, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2168768474058000173}
@@ -78,8 +78,8 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 607178045
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Color: {r: 0.3372549, g: 0.19215687, b: 0.1254902, a: 1}
   m_MaskInteraction: 0
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2168768474058000173}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7693958799715548256}
   - component: {fileID: 327875815584530488}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Saw Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,8 +295,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 607178045
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: -9017722066578424630, guid: 3712c095585ab1b4b93121a54ab24b35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5596963793929358139}
   - component: {fileID: 6945132349708712747}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 2484789953103925012}
   - component: {fileID: 8864977434408007974}
   - component: {fileID: 8100509792375186228}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Saw Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,6 +601,9 @@ MonoBehaviour:
   rightPos: {fileID: 4626564664636386502}
   startRight: 0
   oscillationTime: 3
+  slowDuration: 0
+  slowedTimeScale: 0.25
+  isSlowed: 0
   rotationSize: 2880
   sawBlade: {fileID: 5353508800452052060}
 --- !u!1 &7191331578579523529
@@ -612,7 +615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 882915644994285749}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: LeftPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4626564664636386502}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: RightPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

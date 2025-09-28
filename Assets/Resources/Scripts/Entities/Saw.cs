@@ -4,12 +4,23 @@ public class Saw : OscillatingTrap
 {
     public float rotationSize;
     public GameObject sawBlade;
-    
+    private Vector3 fromEuler, toEuler;
+
     protected override void Awake()
     {
         base.Awake();
-        LeanTween.rotate(sawBlade, rotationSize * (startRight ? Vector3.forward : Vector3.back), oscillationTime)
-            .setEaseInOutSine()
-            .setLoopPingPong();
+        fromEuler = new Vector3(0, 0, 0);
+        toEuler = new Vector3(0, 0, -rotationSize);
+        sawBlade.transform.rotation = Quaternion.Euler(fromEuler);
+    }
+    
+    protected override void Update()
+    {
+        // advance time / movement first
+        base.Update();
+
+        float u = Mathf.PingPong(elapsed / oscillationTime, 1f);
+        float eased = LeanTween.easeInOutSine(0f, 1f, u);
+        sawBlade.transform.rotation = Quaternion.Euler(Vector3.LerpUnclamped(fromEuler, toEuler, eased));
     }
 }

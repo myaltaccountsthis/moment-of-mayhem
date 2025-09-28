@@ -1,30 +1,36 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class FiringDevice : ReversibleEntity
-{   
+public class FiringDevice : CollidableEntity, IInteractable
+{
     public ProjectileEntity projectilePrefab;
     public Vector2 fixedDirection;
-    public bool isEnabled = true;
     public float mainDelay;
     public float slowedDelay;
-    
+
     public bool isAiming;
     public Player target;
     // public AudioSource fireSound;
-    
+
     [SerializeField] private Sprite inactiveSprite;
     [SerializeField] private Sprite readySprite;
     [SerializeField] private Sprite shootingSprite;
     private Sprite normalSprite;
+
+    private bool isSlowed = false;
+    public float slowedDuration = 3f;
+    private float currentDelay => isSlowed ? slowedDelay : mainDelay;
     private Coroutine coroutine;
-    
-    
+    private ParticleSystem particles;
+
+    protected bool IsSlowed => isSlowed;
+    protected float CurrentDelay => currentDelay;
+
     protected override void Awake()
     {
         base.Awake();
         fixedDirection = fixedDirection.normalized;
+        particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
     }
 
     protected override void Start()
@@ -43,15 +49,21 @@ public class FiringDevice : ReversibleEntity
             transform.up = getTargetDirection();
         }
     }
-    
+
     private Vector2 getTargetDirection()
     {
         return (target.transform.position - transform.position).normalized;
     }
-    
-    public float GetCurrentDelay()
+
+    private IEnumerator WaitDynamic(System.Func<float> getDuration)
     {
-        return IsReversing ? slowedDelay : mainDelay;
+        float progress = 0f;
+        while (progress < 1f)
+        {
+            float dur = Mathf.Max(0.0001f, getDuration());
+            progress += Time.deltaTime / dur;
+            yield return null;
+        }
     }
 
     IEnumerator firing()
@@ -60,47 +72,55 @@ public class FiringDevice : ReversibleEntity
         {
             if (enabled)
                 spriteRenderer.sprite = readySprite;
-            
-            float delay = GetCurrentDelay();
-            yield return new WaitForSeconds(delay / 4);
+
+            yield return WaitDynamic(() => CurrentDelay / 4f);
             if (!enabled) continue;
-            
-            
+
             ProjectileEntity proj = Instantiate(projectilePrefab, GetProjectileStartPosition(), Quaternion.identity);
-            Vector2 direction = isAiming && (target is not null) 
-                ? getTargetDirection() 
+            Vector2 direction = isAiming && (target is not null)
+                ? getTargetDirection()
                 : fixedDirection;
             proj.transform.up = direction;
-            
-        
+
             // AudioSource audio = Instantiate(fireSound, transform.position, Quaternion.identity);
             // audio.Play();
             // Destroy(audio.gameObject, audio.clip.length);
             spriteRenderer.sprite = shootingSprite;
-            yield return new WaitForSeconds(delay / 2);
+
+            yield return WaitDynamic(() => CurrentDelay / 2f);
+
             spriteRenderer.sprite = normalSprite;
-            OnWait(delay / 2);
-            yield return new WaitForSeconds(delay / 4);
+
+            OnWait(CurrentDelay / 2f); 
+
+            yield return WaitDynamic(() => CurrentDelay / 4f);
         }
     }
-
 
     protected virtual void OnWait(float seconds)
     {
         
     }
-    
+
     protected virtual Vector3 GetProjectileStartPosition()
     {
         return transform.position;
     }
-    
-    public void SetEnabled(bool enabled)
+
+    public void Interact(Player player)
     {
-        this.isEnabled = enabled;
-        if (!enabled) {
-            spriteRenderer.sprite = inactiveSprite;
-            StopCoroutine(coroutine);
-        }
+        isSlowed = true;
+        Invoke(nameof(ResetSpeed), slowedDuration);
+        spriteRenderer.color = Color.lightGoldenRod;
+        var emission = particles.emission;
+        emission.enabled = true;
+    }
+
+    private void ResetSpeed()
+    {
+        isSlowed = false;
+        spriteRenderer.color = Color.white;
+        var emission = particles.emission;
+        emission.enabled = false;
     }
 }
