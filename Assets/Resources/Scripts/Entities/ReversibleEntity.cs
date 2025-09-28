@@ -18,20 +18,20 @@ public class ReversibleEntityData
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ReversibleEntity : CollidableEntity
+public class ReversibleEntity : CollidableEntity, IInteractable
 {
     private const int MaxStateHistory = 1200;
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
 
     protected new Rigidbody2D rigidbody;
-    
+
     private int ReverseTime = 0;
     public bool IsReversing => ReverseTime > 0;
 
     private int totalReverseTime = 0;
     private int totalReverseFrames = 0;
     private int totalFrameCount = 0;
-    
+
     public virtual bool DestroyableOnReverse => false;
 
     protected override void Awake()
@@ -64,13 +64,13 @@ public class ReversibleEntity : CollidableEntity
 
             // Find left and right states of the current index
             ReversibleEntityData rightState = stateHistory.Last.Value;
-            ReversibleEntityData leftState = Mathf.FloorToInt(idx) == right 
+            ReversibleEntityData leftState = Mathf.FloorToInt(idx) == right
                 ? rightState : stateHistory.Last.Previous!.Value;
 
             // Interpolate between the two states
             Vector3 newPos = Vector3.Lerp(leftState.position, rightState.position, delta);
-            transform.position = newPos;
-            
+            rigidbody.MovePosition(newPos);
+
             ReverseTime--;
             if (ReverseTime <= 0)
             {
@@ -102,20 +102,21 @@ public class ReversibleEntity : CollidableEntity
         return new ReversibleEntityData(transform.position);
     }
 
-    public override void Interact(Player player)
+    public void Interact(Player player)
     {
-        if (IsReversing) return;
+        // if (IsReversing) return;
         // Start reversing time for this entity
         Reverse(60, 30);
     }
 
     // reverse timeInFrames: number of frames to rewind
     // durationInFrames: number of frames over which to perform the rewind (for easing)
-    public void Reverse(int timeInFrames, int durationInFrames) {
+    public void Reverse(int timeInFrames, int durationInFrames)
+    {
         if (IsReversing) return;
         timeInFrames = Mathf.Max(1, timeInFrames);
         // n + 1 states for n frames of rewind
-        stateHistory.AddLast(CaptureState()); 
+        stateHistory.AddLast(CaptureState());
         ReverseTime = durationInFrames;
         totalFrameCount = stateHistory.Count;
         totalReverseTime = durationInFrames;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OneMoveEntity : InteractableEntity
+public class OneMoveEntity : CollidableEntity, IInteractable
 {
     [SerializeField] private Vector3 moveOffset;
     private const float AnimationDuration = 0.7f;
@@ -18,7 +18,7 @@ public class OneMoveEntity : InteractableEntity
     protected override void Update()
     {
         base.Update();
-        
+
         if (!used)
         {
             return;
@@ -32,7 +32,7 @@ public class OneMoveEntity : InteractableEntity
         transform.position = initialPosition + moveOffset * alpha;
     }
 
-    public override void Interact(Player player)
+    public void Interact(Player player)
     {
         if (used)
         {

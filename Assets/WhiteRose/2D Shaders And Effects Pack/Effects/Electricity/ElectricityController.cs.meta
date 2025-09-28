@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7ffa2ac233bde6c448881dd497fb8741
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Effects/Electricity/ElectricityController.cs
+  uploadId: 729668

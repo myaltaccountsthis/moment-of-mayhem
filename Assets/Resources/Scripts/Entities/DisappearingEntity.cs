@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class DisappearingEntity : InteractableEntity
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+public class DisappearingEntity : CollidableEntity, IInteractable
 {
     private const float AnimationDuration = 0.7f;
     private float timer = 0f;
@@ -17,7 +19,7 @@ public class DisappearingEntity : InteractableEntity
     protected override void Update()
     {
         base.Update();
-        
+
         if (!used)
         {
             return;
@@ -34,7 +36,7 @@ public class DisappearingEntity : InteractableEntity
         col.enabled = alpha > 0f;
     }
 
-    public override void Interact(Player player)
+    public void Interact(Player player)
     {
         if (used)
         {

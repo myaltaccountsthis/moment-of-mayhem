@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: dcb6c313c5812ed408a7aa9c6ac53632
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/DistortionShaders/Shockwave/ShockwaveShader.shadergraph
+  uploadId: 729668

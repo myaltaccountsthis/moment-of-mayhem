@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class CollidableEntity : InteractableEntity
+public class CollidableEntity : Entity
 {
     void OnCollisionEnter2D(Collision2D collision)
     {

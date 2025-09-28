@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 77378c9cff3844b4f939feff446578ef
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/NatureShader/Flag/FlagController.cs
+  uploadId: 729668

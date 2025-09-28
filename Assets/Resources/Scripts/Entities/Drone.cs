@@ -6,6 +6,7 @@ public class Drone : ReversibleEntity
     [SerializeField] private float range;
     [SerializeField] private float followDistance;
     [SerializeField] private float speed;
+    [SerializeField] private float rushSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private int bulletsLeft;
     [SerializeField] private float fireRate;
@@ -42,25 +43,37 @@ public class Drone : ReversibleEntity
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (IsReversing) return;
 
+        Vector3 direction = (target.position - transform.position).normalized;
         Vector2 targetPosition = target.position;
-        if (bulletsLeft > 0) {
+        if (bulletsLeft > 0 && Vector2.Distance(transform.position, target.position) <= range)
+        {
             if (fireCooldown <= 0f)
             {
-                Vector3 spawnLocation = transform.position + (target.position - transform.position).normalized * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
-                Instantiate(bulletPrefab, spawnLocation, Quaternion.LookRotation(Vector3.forward, target.position - spawnLocation));
+                Vector3 spawnLocation = transform.position + direction * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
+                Instantiate(bulletPrefab, spawnLocation, Quaternion.LookRotation(Vector3.forward, direction));
                 bulletsLeft--;
                 fireCooldown = 1f / fireRate;
             }
-            else
-            {
-                fireCooldown -= Time.fixedDeltaTime;
-            }
             // Drone should stay a set distance away from the player while shooting
-            targetPosition = (Vector2)target.position + ((Vector2)(transform.position - target.position).normalized * followDistance);
+            targetPosition = target.position + (direction * followDistance);
         }
 
-        rb.MovePositionAndRotation(Vector2.SmoothDamp(transform.position, targetPosition, ref movementVelocity, 0.3f, speed, Time.fixedDeltaTime), Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.forward, target.position - transform.position), rotationSpeed * Time.fixedDeltaTime));
+
+        if ((fireCooldown -= Time.fixedDeltaTime) <= 0f)
+        {
+            var rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.forward, direction), rotationSpeed * Time.fixedDeltaTime);
+            if (bulletsLeft <= 0)
+            {
+                // Rush the player when out of bullets
+                rb.MovePositionAndRotation(transform.position + rushSpeed * Time.fixedDeltaTime * direction, rotation);
+            }
+            else
+            {
+                rb.MovePositionAndRotation(Vector2.SmoothDamp(transform.position, targetPosition, ref movementVelocity, .3f, speed, Time.fixedDeltaTime), rotation);
+            }
+        }
     }
 
     protected override void OnPlayerCollide(Player player)

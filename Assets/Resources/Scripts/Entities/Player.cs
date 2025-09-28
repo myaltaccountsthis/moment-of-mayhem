@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,25 +7,22 @@ public class Player : ReversibleEntity
     private const float MoveSpeed = 5f;
     private const float MoveDamping = .05f;
     private const float MaxHealth = 100f;
-    private const float InteractsPerSecond = 2f;
 
     // Affects how fast or slow the player's health will drain over time
     public float healthDrainScale = 1f;
 
     [SerializeField] private RectTransform healthBar;
 
-    private InputAction moveAction, clickAction;
+    private InputAction moveAction;
     private Vector2 inputVector, inputVelocity;
     // Health is "hp bar" in seconds, constantly drains
     private float health, bonusHealth;
-    private float interactCooldown;
 
     protected override void Awake()
     {
         base.Awake();
 
         moveAction = gameController.inputActions.FindAction("Move");
-        clickAction = gameController.inputActions.FindAction("Attack");
     }
 
     protected override void Start()
@@ -37,24 +33,6 @@ public class Player : ReversibleEntity
         inputVector = Vector2.zero;
         inputVelocity = Vector2.zero;
 
-        interactCooldown = 0f;
-        int interactableMask = LayerMask.GetMask("Interactable", "Player");
-        clickAction.performed += ctx =>
-        {
-            // Check if player is on cooldown
-            if (interactCooldown > 0f) return;
-            interactCooldown = 1f / InteractsPerSecond;
-
-            // Perform raycast for interactable entities
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            RaycastHit2D hit = Physics2D.CircleCast(mouseWorldPos, 0.3f, Vector2.zero, 0f, interactableMask);
-            if (hit.collider != null && hit.collider.TryGetComponent(out InteractableEntity entity))
-            {
-                Debug.Log("Interacting with " + entity.name);
-                entity.Interact(this);
-            }
-        };
-
         UpdateHealthBar(false);
     }
 
@@ -63,7 +41,11 @@ public class Player : ReversibleEntity
         base.Update();
 
         TakeDamage(Time.deltaTime * healthDrainScale);
-        interactCooldown = Math.Max(0f, interactCooldown - Time.deltaTime);
+    }
+
+    void LateUpdate()
+    {
+        UpdateHealthBar();
     }
 
     protected override void FixedUpdate()
@@ -83,15 +65,17 @@ public class Player : ReversibleEntity
         rigidbody.MovePosition(rigidbody.position + MoveSpeed * Time.fixedDeltaTime * inputVector);
     }
 
-    public void UpdateHealthBar(bool shouldTween = true)
+    private Vector3 healthBarVelocity = Vector3.zero;
+    public void UpdateHealthBar(bool shouldEase = true)
     {
-        if (shouldTween)
+        Vector3 targetScale = new(health / MaxHealth, 1f, 1f);
+        if (shouldEase)
         {
-            LeanTween.scaleX(healthBar.gameObject, health / MaxHealth, 0.2f).setEaseOutQuad();
+            healthBar.localScale = Vector3.SmoothDamp(healthBar.localScale, targetScale, ref healthBarVelocity, .1f, Mathf.Infinity, Time.deltaTime);
         }
         else
         {
-            healthBar.localScale = new Vector3(health / MaxHealth, 1f, 1f);
+            healthBar.localScale = targetScale;
         }
     }
 
@@ -100,14 +84,14 @@ public class Player : ReversibleEntity
         // Implement health reduction logic here
         if (bonusHealth > 0)
         {
-            float bonusUsed = Math.Min(bonusHealth, amount);
+            float bonusUsed = Mathf.Min(bonusHealth, amount);
             bonusHealth -= bonusUsed;
             amount -= bonusUsed;
         }
-        health = Math.Max(0, health - amount);
-        UpdateHealthBar();
+        health = Mathf.Max(0, health - amount);
         if (health <= 0)
         {
+            UpdateHealthBar(false);
             gameController.OnPlayerDeath();
         }
     }

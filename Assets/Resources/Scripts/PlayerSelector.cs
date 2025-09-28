@@ -1,46 +1,84 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerSelector : MonoBehaviour
 {
     // to add: player, gamecontroller, selection box
-    public Entity selectedEntity;
+    public SpriteRenderer selectionBox;
+    public bool canSelectSelf = false;
 
+    private const float InteractsPerSecond = 3f;
+
+    private Player player;
+    private GameController gameController;
+    private InputAction clickAction;
+    // private Material outlineMaterial;
+
+    private Entity selectedEntity;
+    // private Material selectedEntityOriginalMaterial;
+    private float interactCooldown;
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        clickAction = gameController.inputActions.FindAction("Attack");
+        // outlineMaterial = Resources.Load<Material>("Materials/OutlineMaterial");
+
+        clickAction.Enable();
+    }
+
+    void Start()
+    {
+        selectedEntity = null;
+        // selectedEntityOriginalMaterial = null;
+        interactCooldown = 0f;
+    }
 
     void Update()
     {
-        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+        interactCooldown = Mathf.Max(0f, interactCooldown - Time.deltaTime);
 
-        // Check if the ray hit a collider
         Entity oldEntity = selectedEntity;
-        if (hit.collider != null)
-        {
-            GameObject hoveredObject = hit.collider.gameObject;
-            Entity entity = hoveredObject.GetComponent<Entity>();
-            selectedEntity = entity;
-            UpdateSelectionOutline(oldEntity);
-            if (entity != null)
-            {
-                // The hovered object has an Entity component
-                // You can now interact with the entity as needed
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    // Call interact on entity
-                    
-                }
-            }
-            Debug.Log("Mouse is hovering over: " + hoveredObject.name);
-        }
-        else
+        // Clear selection if on cooldown
+        if (interactCooldown > 0f)
         {
             selectedEntity = null;
         }
+        else
+        {
+            int interactableMask = canSelectSelf ? LayerMask.GetMask("Interactable", "Player") : LayerMask.GetMask("Interactable");
+            // Perform raycast for interactable entities
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            RaycastHit2D hit = Physics2D.CircleCast(mouseWorldPos, 0.25f, Vector2.zero, 0f, interactableMask);
+            if (hit.collider != null && hit.collider.TryGetComponent(out Entity entity) && entity is IInteractable interactable)
+            {
+                // Check if the ray hit a collider
+                selectedEntity = entity;
+
+                if (clickAction.triggered && interactCooldown <= 0f)
+                {
+                    Debug.Log($"Interacting with {entity.name}");
+                    interactable.Interact(player);
+                    interactCooldown = 1f / InteractsPerSecond;
+                }
+            }
+            else
+            {
+                selectedEntity = null;
+            }
+        }
+        UpdateSelectionOutline(oldEntity);
+        if (selectedEntity != null)
+            selectionBox.transform.position = selectedEntity.transform.position;
     }
 
     // Selected entity should have an outline component, should be updated to new one
     void UpdateSelectionOutline(Entity oldEntity)
     {
+        if (selectedEntity == null)
+            selectionBox.enabled = false;
+
         if (selectedEntity == oldEntity)
         {
             return;
@@ -49,21 +87,21 @@ public class PlayerSelector : MonoBehaviour
         if (oldEntity != null)
         {
             // Deselect logic here, remove render
-            Debug.Log("Deselected entity: " + oldEntity.name);
-            if (oldEntity.GetComponent<Outline>() != null)
+            if (oldEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
             {
-                oldEntity.GetComponent<Outline>().enabled = false;
+                // spriteRenderer.material = selectedEntityOriginalMaterial;
             }
         }
 
         // Update UI or other game elements to reflect the new selection
-        Debug.Log("Selected entity: " + (selectedEntity != null ? selectedEntity.name : "None"));
         // Implement select logic
         if (selectedEntity != null)
         {
-            if (selectedEntity.GetComponent<Outline>() != null)
+            if (selectedEntity.TryGetComponent(out SpriteRenderer spriteRenderer))
             {
-                selectedEntity.GetComponent<Outline>().enabled = true;
+                selectionBox.enabled = true;
+                // selectedEntityOriginalMaterial = spriteRenderer.material;
+                // spriteRenderer.material = outlineMaterial;
             }
         }
     }

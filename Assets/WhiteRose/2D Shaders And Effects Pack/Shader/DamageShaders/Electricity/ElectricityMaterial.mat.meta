@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 89e99a596a533ad48b5478d65f110599
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/DamageShaders/Electricity/ElectricityMaterial.mat
+  uploadId: 729668

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4d7ca4b2affc20147bc818062fd64d45
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/AttackAndDefenseShaders/Laser/Prefabs/FireEffect.prefab
+  uploadId: 729668

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 768cec2710c22054dba8935030b97452
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Effects/DamageEffects/Blooding/Materials/BloodingMaterial.mat
+  uploadId: 729668

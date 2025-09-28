@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a8b1696946aa3a49a49329be1dc2d23
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/AttackAndDefenseShaders/Laser/Prefabs/HitEffect
+    Variant.prefab
+  uploadId: 729668

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f56445e42f01b384cbb914ee6d8ba426
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/AttackAndDefenseShaders/OuterShield/Prefab/OuterShield.prefab
+  uploadId: 729668

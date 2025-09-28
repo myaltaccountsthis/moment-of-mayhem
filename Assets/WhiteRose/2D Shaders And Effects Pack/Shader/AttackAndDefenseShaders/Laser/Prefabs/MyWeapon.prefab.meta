@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 746136c5d33642648bf0743944546f15
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/AttackAndDefenseShaders/Laser/Prefabs/MyWeapon.prefab
+  uploadId: 729668

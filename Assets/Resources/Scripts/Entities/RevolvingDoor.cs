@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class RevolvingDoor : InteractableEntity
+public class RevolvingDoor : CollidableEntity, IInteractable
 {
     private bool clockwise = false;
     private float rotationSpeed = 90f; // degrees per second
+
+    public void Interact(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
 
     // Update is called once per frame
     protected override void Update()

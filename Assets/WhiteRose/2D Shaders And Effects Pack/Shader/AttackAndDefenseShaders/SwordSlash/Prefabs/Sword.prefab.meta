@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 81d26f6fa9b531c49aa5589abda0de07
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/AttackAndDefenseShaders/SwordSlash/Prefabs/Sword.prefab
+  uploadId: 729668

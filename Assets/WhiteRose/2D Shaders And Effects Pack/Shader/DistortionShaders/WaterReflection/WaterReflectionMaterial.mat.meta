@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cda697db98802cc4385f514c235a1c7a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/DistortionShaders/WaterReflection/WaterReflectionMaterial.mat
+  uploadId: 729668

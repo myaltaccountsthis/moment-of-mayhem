@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TimeBomb : InteractableEntity
+public class TimeBomb : CollidableEntity, IInteractable
 {
     const float CountdownTime = 15f;
     private float countdown = CountdownTime;
@@ -14,7 +14,7 @@ public class TimeBomb : InteractableEntity
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public override void Interact(Player player)
+    public void Interact(Player player)
     {
         if (!reversed)
         {

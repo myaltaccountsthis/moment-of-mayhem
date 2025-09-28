@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5ee444f81d0f2464d85562d4024b59e4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/OutlineShaders/UnifiedOutline/UnifiedOutline.cs
+  uploadId: 729668

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a1b0487b4c7ff74895683cca8684d7e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/TransparencyShaders/Hologram/HologramMaterial.mat
+  uploadId: 729668

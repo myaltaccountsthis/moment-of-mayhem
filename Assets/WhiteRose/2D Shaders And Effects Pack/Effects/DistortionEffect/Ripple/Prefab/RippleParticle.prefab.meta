@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c7a680b4573b2124496e9e4bc370b557
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Effects/DistortionEffect/Ripple/Prefab/RippleParticle.prefab
+  uploadId: 729668

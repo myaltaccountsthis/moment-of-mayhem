@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f0cb1f78732294b40a67482e6812bced
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281013
+  packageName: 2D Shaders And Effects Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/WhiteRose/2D Shaders And Effects Pack/Shader/DistortionShaders/WaterReflection/RenderTextures/WaterRenderTexture3.renderTexture
+  uploadId: 729668
