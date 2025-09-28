@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5504586907185935982}
   - component: {fileID: -1390409796446737516}
   m_Layer: 7
-  m_Name: PresentDrone
+  m_Name: FarFutureDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,12 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f8d283b9e179547a1d644d05d24518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drone
-  range: 3
+  range: 5
   followDistance: 2
-  speed: 2
-  rushSpeed: 4
+  speed: 4
+  rushSpeed: 6
   rotationSpeed: 90
-  bulletsLeft: 3
+  bulletsLeft: 8
   fireRate: 0.5
-  meleeDamage: 20
-  bulletPrefab: {fileID: -8210884451609533128, guid: b8126847134e3f34c8fe4d8190fd8e3a, type: 3}
+  meleeDamage: 30
+  bulletPrefab: {fileID: -8210884451609533128, guid: 6dae2acbabf39794a8ab078bfef69454, type: 3}
