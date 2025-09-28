@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4063939455641706275}
   - component: {fileID: -7051099203541025556}
   m_Layer: 0
-  m_Name: PresentDroneSpawner
+  m_Name: FarFutureDroneSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &-7051099203541025556
 MonoBehaviour:
@@ -91,6 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f712f8df9ee25546aa0682ae3ba7dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DroneSpawner
-  dronePrefab: {fileID: 2322094315224366490, guid: 94022ccb9c351584689b6983e5442726, type: 3}
+  dronePrefab: {fileID: 2322094315224366490, guid: 33d72feb42448d141abc606ef0af8ed5, type: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
-  spawnDelay: 1.5
+  spawnDelay: 0.8

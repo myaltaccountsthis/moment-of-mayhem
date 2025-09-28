@@ -68,7 +68,7 @@ public class SlidePuzzle : MonoBehaviour
             grid[newGridPos.x, newGridPos.y] = System.Array.IndexOf(objects, obj) + 1;
             // Move object
             obj.gridPosition = newGridPos;
-            obj.transform.position = new Vector3(newGridPos.x + start.x + .5f, newGridPos.y + start.y + .5f, obj.transform.position.z);
+            obj.canMove = false;
             moveTimer = MoveDuration;
             origPos = objGridPos;
             targetPos = newGridPos;
@@ -85,11 +85,12 @@ public class SlidePuzzle : MonoBehaviour
             SlidePuzzleObject obj = objects[currMovingIndex];
             float alpha = 1f - (moveTimer / MoveDuration);
             alpha = LeanTween.easeInOutSine(0, 1, alpha);
-            obj.transform.position = Vector3.Lerp(toWorldPosition(origPos), toWorldPosition(targetPos), alpha);
+            obj.GetComponent<Rigidbody2D>().position = Vector3.Lerp(toWorldPosition(origPos), toWorldPosition(targetPos), alpha);
             if (moveTimer <= 0f)
             {
                 currMovingIndex = -1;
-                obj.transform.position = toWorldPosition(targetPos);
+                obj.GetComponent<Rigidbody2D>().position = toWorldPosition(targetPos);
+                obj.canMove = true;
             }
         }
     }

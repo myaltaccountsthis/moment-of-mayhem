@@ -1,13 +1,18 @@
 using UnityEngine;
 
-public class SlidePuzzleObject : CollidableEntity, IInteractable
+[RequireComponent(typeof(Collider2D), (typeof(Rigidbody2D)))]
+public class SlidePuzzleObject : Entity, IInteractable
 {
     public Vector2Int gridPosition;
     public Vector2Int direction;
     public SlidePuzzle puzzle;
-    
+    public bool canMove = true;
+
     public void Interact(Player player)
     {
-        puzzle.MoveObject(this);
+        if (canMove)
+        {
+            puzzle.MoveObject(this);
+        }
     }
 }

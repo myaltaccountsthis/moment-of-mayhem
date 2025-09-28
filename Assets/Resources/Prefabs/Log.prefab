@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 4874249675118039670}
   - component: {fileID: 379706013335700627}
   - component: {fileID: 2177408456753425958}
-  - component: {fileID: 6465662656676344470}
-  m_Layer: 3
+  - component: {fileID: 552660928509081812}
+  m_Layer: 7
   m_Name: LogBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,8 +159,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 607178045
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7497714459503005804, guid: 58c8f517c056f9b448cbe704e07e74bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -200,7 +200,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6465662656676344470
+--- !u!114 &552660928509081812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6933140575556889448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6a362a5e07454aa206b82d9937c07c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f91ce299f27d3d4aac0270342530f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Log
   damage: 10

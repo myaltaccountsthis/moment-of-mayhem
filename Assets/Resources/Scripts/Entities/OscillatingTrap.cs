@@ -24,8 +24,8 @@ public class OscillatingTrap : DamagePart, IInteractable
         transform.position = startRight ? rightPos.position : leftPos.position;
         particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
     }
-    
-    
+
+
     protected override void Update()
     {
         base.Update();

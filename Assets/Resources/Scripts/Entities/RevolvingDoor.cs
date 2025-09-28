@@ -1,26 +1,21 @@
 using UnityEngine;
 
-public class RevolvingDoor : CollidableEntity, IInteractable
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+public class RevolvingDoor : Entity, IInteractable
 {
     private bool clockwise = false;
     private float rotationSpeed = 90f; // degrees per second
 
-    public void Interact(Player player)
+    protected override void Start()
     {
-        throw new System.NotImplementedException();
+        base.Start();
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<Rigidbody2D>().angularVelocity = 90f;
     }
 
-    // Update is called once per frame
-    protected override void Update()
+    public void Interact(Player player)
     {
-        float rotationAmount = rotationSpeed * Time.deltaTime;
-        if (clockwise)
-        {
-            transform.Rotate(0f, 0f, -rotationAmount);
-        }
-        else
-        {
-            transform.Rotate(0f, 0f, rotationAmount);
-        }
+        clockwise = !clockwise;
+        GetComponent<Rigidbody2D>().angularVelocity = clockwise ? -rotationSpeed : rotationSpeed;
     }
 }

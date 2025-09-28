@@ -64,6 +64,7 @@ public class Player : ReversibleEntity
         if (!gameController.IsPlayerAlive) return;
         if (IsReversing) return;
 
+        collider.enabled = true;
         Vector2 targetInput = moveAction.ReadValue<Vector2>();
         if (targetInput.sqrMagnitude > 1f)
         {
@@ -116,6 +117,7 @@ public class Player : ReversibleEntity
         else
         {
             isInvincible = true;
+            collider.enabled = false;
             if (reverseFrames > 0)
                 gameController.ReverseAll(reverseFrames);
         }

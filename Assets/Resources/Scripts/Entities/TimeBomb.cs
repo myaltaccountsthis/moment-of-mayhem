@@ -34,7 +34,7 @@ public class TimeBomb : CollidableEntity, IInteractable
             // possible animation
             foreach (DamagePart block in explosionBlocks)
             {
-                block.enabled = false;
+                block.gameObject.SetActive(false);
             }
             // Start countdown
             countdown = CountdownTime;
@@ -66,11 +66,11 @@ public class TimeBomb : CollidableEntity, IInteractable
                 // Explode
                 foreach (DamagePart block in explosionBlocks)
                 {
-                    block.enabled = true;
+                    block.gameObject.SetActive(true);
                 }
                 spriteRenderer.sprite = explodingSprite;
                 reversed = false;
-
+                cooldown = CooldownTime;
             }
         }
         cooldown -= Time.deltaTime;
