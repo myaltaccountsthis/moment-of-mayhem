@@ -30,15 +30,28 @@ public class GameController : MonoBehaviour
         IsPlayerAlive = true;
         Time.timeScale = 0f;
 
+
+        FadeFromBlack(1f).setOnComplete(() =>
+        {
+            Time.timeScale = 1f;
+        });
+    }
+
+    public LTDescr FadeToBlack(float duration = 1f)
+    {
+        coverImage.color = Color.clear;
+        coverImage.enabled = true;
+        return LeanTween.alpha(coverImage.rectTransform, 1f, duration).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
+    }
+
+    public LTDescr FadeFromBlack(float duration = 1f)
+    {
         coverImage.color = Color.black;
         coverImage.enabled = true;
-        LeanTween.delayedCall(1f, () =>
-            LeanTween.alpha(coverImage.rectTransform, 0f, 1f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
-            {
-                coverImage.enabled = false;
-                Time.timeScale = 1f;
-            })
-        ).setIgnoreTimeScale(true);
+        return LeanTween.alpha(coverImage.rectTransform, 0f, duration).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
+        {
+            coverImage.enabled = false;
+        });
     }
 
     public void AddEntity(ReversibleEntity entity)

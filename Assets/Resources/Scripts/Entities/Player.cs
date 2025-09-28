@@ -61,6 +61,7 @@ public class Player : ReversibleEntity
     {
         base.FixedUpdate();
 
+        if (!gameController.IsPlayerAlive) return;
         if (IsReversing) return;
 
         Vector2 targetInput = moveAction.ReadValue<Vector2>();
