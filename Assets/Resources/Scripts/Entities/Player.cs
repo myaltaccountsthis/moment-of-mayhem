@@ -10,6 +10,7 @@ public class Player : ReversibleEntity
 
     // Affects how fast or slow the player's health will drain over time
     public float healthDrainScale = 1f;
+    public bool isInvincible = false;
 
     [SerializeField] private RectTransform healthBar;
 
@@ -41,6 +42,10 @@ public class Player : ReversibleEntity
         base.Update();
 
         TakeDamage(Time.deltaTime * healthDrainScale);
+        if (isInvincible && !IsReversing)
+        {
+            isInvincible = false;
+        }
     }
 
     void LateUpdate()
@@ -79,8 +84,10 @@ public class Player : ReversibleEntity
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, int reverseFrames = 0)
     {
+        if (isInvincible || IsReversing) return;
+
         // Implement health reduction logic here
         if (bonusHealth > 0)
         {
@@ -93,6 +100,11 @@ public class Player : ReversibleEntity
         {
             UpdateHealthBar(false);
             gameController.OnPlayerDeath();
+        }
+        else
+        {
+            isInvincible = true;
+            gameController.ReverseAll(reverseFrames);
         }
     }
 

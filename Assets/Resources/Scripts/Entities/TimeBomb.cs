@@ -8,12 +8,7 @@ public class TimeBomb : CollidableEntity, IInteractable
     [SerializeField] private Sprite safeSprite;
     [SerializeField] private Sprite explodedSprite;
     [SerializeField] private DamagePart[] explosionBlocks;
-    private SpriteRenderer spriteRenderer;
-    protected override void Awake()
-    {
-        base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+    
     public void Interact(Player player)
     {
         if (!reversed)

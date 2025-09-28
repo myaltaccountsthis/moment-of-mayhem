@@ -71,15 +71,17 @@ public class ReversibleEntity : CollidableEntity, IInteractable
             Vector3 newPos = Vector3.Lerp(leftState.position, rightState.position, delta);
             rigidbody.MovePosition(newPos);
 
+
+            if (DestroyableOnReverse && stateHistory.Count == 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             ReverseTime--;
             if (ReverseTime <= 0)
             {
-                if (DestroyableOnReverse)
-                {
-                    Destroy(gameObject);
-                    return;
-                }
-
+                spriteRenderer.color = Color.white;
                 totalReverseTime = 0;
                 totalReverseFrames = 0;
                 totalFrameCount = 0;
@@ -121,6 +123,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
         totalFrameCount = stateHistory.Count;
         totalReverseTime = durationInFrames;
         totalReverseFrames = timeInFrames;
+        spriteRenderer.color = Color.lightGoldenRodYellow;
     }
 
     public void SetRigidbodyPosition(Vector3 position)

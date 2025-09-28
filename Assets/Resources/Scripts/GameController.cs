@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEditor;
+using NUnit.Framework;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private SceneAsset[] worlds;
+    [SerializeField] private Player player;
     private static readonly WaitForSecondsRealtime _waitForSeconds1 = new(1f);
     private readonly HashSet<ReversibleEntity> reversibleEntities = new();
     public InputActionAsset inputActions;
-    public Image coverImage;
-
     public bool IsPlayerAlive { get; private set; }
+    public Image coverImage;
+    private int currentWorldIndex = 0;
 
     void Awake()
     {
@@ -85,5 +89,28 @@ public class GameController : MonoBehaviour
         // Restart the scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         yield return null;
+    }
+
+    public void ToNextWorld()
+    {
+        currentWorldIndex++;
+        Assert.IsTrue(currentWorldIndex < worlds.Length, "No more worlds available!");
+        coverImage.color = Color.black;
+        coverImage.enabled = true;
+        player.isInvincible = true;
+        LeanTween.delayedCall(0f, () =>
+            LeanTween.alpha(coverImage.rectTransform, 0f, 1f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
+            {
+                coverImage.enabled = false;
+                UnityEngine.SceneManagement.SceneManager.LoadScene(worlds[currentWorldIndex].name);
+                player.isInvincible = false;
+            })
+        ).setIgnoreTimeScale(true);
+        Time.timeScale = 0f;
+    }
+
+    public void NextBossLevel()
+    {
+        // Goes backwards using special boss scenes
     }
 }

@@ -6,14 +6,12 @@ public class DisappearingEntity : CollidableEntity, IInteractable
 {
     private const float AnimationDuration = 0.7f;
     private float timer = 0f;
-    private SpriteRenderer spriteRenderer;
     private Collider2D col;
     private bool used = false;
 
     protected override void Awake()
     {
         base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
     }
     protected override void Update()
