@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Present.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Future.unity
+    guid: d9220da34bbdf234e926df8079da2fac
+  - enabled: 1
+    path: Assets/Scenes/FarFuture.unity
+    guid: 649c247a047f15142bd9cb8ed1374603
+  - enabled: 1
+    path: Assets/Scenes/Void.unity
+    guid: 578ded62adedcae4bb7ab090b835a97f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

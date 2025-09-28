@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum BossPhase
+{
+    Phase1,
+    Phase2,
+    Phase3,
+    Defeated
+}
+
 public class Boss : DamagePart
 {
     private const int DifficultiesPerPhase = 3;
-
-    enum BossPhase
-    {
-        Phase1,
-        Phase2,
-        Phase3
-    }
 
     [SerializeField] private BossAttack[] attacks;
     private BossPhase phase = BossPhase.Phase1;
@@ -75,7 +76,13 @@ public class Boss : DamagePart
             phase = BossPhase.Phase3;
         else if (phase == BossPhase.Phase3)
         {
-            Debug.Log("Player wins");
+            phase = BossPhase.Defeated;
+            Debug.Log("Boss defeated!");
+            gameController.OnBossDefeated();
+            LeanTween.alpha(gameObject, 0f, 1f).setOnComplete(() =>
+            {
+                Destroy(gameObject);
+            });
             return;
         }
 
@@ -83,13 +90,17 @@ public class Boss : DamagePart
         currentDifficulty = newPhase * DifficultiesPerPhase;
         Debug.Log("Boss advanced to phase: " + phase);
 
-        gameController.FadeToBlack(2).setOnComplete(() =>
+        gameController.NextBossLevel(phase, () =>
         {
-            // TODO change tilemap
+            foreach (var attack in attacks)
+            {
+                attack.IsAttacking = false;
+            }
 
             canAttack = true;
+            currentAttackIndex = 0;
             timeUntilNextAttack = 3f;
-            gameController.FadeFromBlack(2);
+            currentAttack = attacks[0];
         });
     }
 }

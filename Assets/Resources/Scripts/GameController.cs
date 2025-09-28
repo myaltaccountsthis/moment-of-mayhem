@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEditor;
 using NUnit.Framework;
+using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
 {
@@ -30,26 +31,30 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0f;
 
 
-        FadeFromBlack(1f).setOnComplete(() =>
+        FadeFromBlack(1f, () =>
         {
             Time.timeScale = 1f;
         });
     }
 
-    public LTDescr FadeToBlack(float duration = 1f)
+    public LTDescr FadeToBlack(float duration = 1f, System.Action callback = null)
     {
         coverImage.color = Color.clear;
         coverImage.enabled = true;
-        return LeanTween.alpha(coverImage.rectTransform, 1f, duration).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
+        return LeanTween.alpha(coverImage.rectTransform, 1f, duration).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
+        {
+            callback?.Invoke();
+        });
     }
 
-    public LTDescr FadeFromBlack(float duration = 1f)
+    public LTDescr FadeFromBlack(float duration = 1f, System.Action callback = null)
     {
         coverImage.color = Color.black;
         coverImage.enabled = true;
         return LeanTween.alpha(coverImage.rectTransform, 0f, duration).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
         {
             coverImage.enabled = false;
+            callback?.Invoke();
         });
     }
 
@@ -121,8 +126,42 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void NextBossLevel()
+    private readonly string[] tilemapNames = new string[] { "Void", "FarFuture", "Future", "Present" };
+    private readonly Color[] backgroundColors = new Color[] {
+        new(0f, 0f, 0f), // Void
+        new(.4f, .3f, .9f), // Far Future
+        new(.3f, .3f, .9f), // Future
+        new(.2f, .8f, .4f)  // Present
+    };
+    public LTDescr NextBossLevel(BossPhase phase, System.Action callback = null)
     {
         // Goes backwards using special boss scenes
+        return FadeToBlack(2, () =>
+        {
+            // Change tilemap
+            int newPhase = (int)phase;
+            int prevPhase = newPhase - 1;
+            Transform grid = GameObject.Find("Grid").transform;
+            TilemapRenderer oldTilemap = grid.Find(tilemapNames[prevPhase]).GetComponent<TilemapRenderer>();
+            TilemapRenderer newTilemap = grid.Find(tilemapNames[newPhase]).GetComponent<TilemapRenderer>();
+            oldTilemap.enabled = false;
+            newTilemap.enabled = true;
+            Camera.main.backgroundColor = backgroundColors[newPhase];
+
+            player.Heal(100);
+
+            LeanTween.delayedCall(2f, () => FadeFromBlack(2, callback));
+        });
+    }
+
+    public void OnBossDefeated()
+    {
+        // End game sequence
+        player.healthDrainScale = 0f;
+        NextBossLevel(BossPhase.Defeated, () =>
+        {
+            // Show end screen
+
+        });
     }
 }

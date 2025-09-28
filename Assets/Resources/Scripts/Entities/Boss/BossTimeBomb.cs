@@ -35,7 +35,7 @@ public class BossTimeBomb : CollidableEntity, IInteractable
         bossCollider = boss.GetComponent<Collider2D>();
 
         timer = fuseTime;
-        speed = 1f;
+        speed = 2f;
         animator.SetTrigger("Triggered");
         primed = false;
         interactCooldown = 0f;

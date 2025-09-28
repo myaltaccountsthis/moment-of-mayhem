@@ -15,7 +15,7 @@ class Maelstrom : BossAttack
     private const int BulletCountPerDirection = 8;
     private const int NumDirections = 7;
     private const float BulletSpeed = 4f;
-    private const float BulletDamage = 3f;
+    private const float BulletDamage = 5f;
     private const float RotationSpeed = -41f; // degrees per second
     private const float MinDistance = 15f, MaxDistance = 20f;
     public float MaxDelayBeforeReverse => MaxDistance / (BulletSpeed * 2f * SpeedFactor);

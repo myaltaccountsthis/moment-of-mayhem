@@ -126,6 +126,8 @@ public class Player : ReversibleEntity
     public void Heal(float amount)
     {
         // Implement healing logic here
+        health = Mathf.Min(MaxHealth, health + amount);
+        UpdateHealthBar(false);
         Debug.Log($"Player healed {amount} health.");
     }
 }
