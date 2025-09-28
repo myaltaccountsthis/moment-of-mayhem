@@ -110,7 +110,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
         // Remove first state if we exceed max history size
         while (stateHistory.Count > MaxStateHistory)
         {
-            Debug.Log("Removing oldest state, count: " + stateHistory.Count);
+            // Debug.Log("Removing oldest state, count: " + stateHistory.Count);
             stateHistory.RemoveFirst();
         }
     }
@@ -139,7 +139,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
         totalFrameCount = stateHistory.Count;
         totalReverseTime = durationInFrames;
         totalReverseFrames = timeInFrames;
-        
+
         ParticleSystem.EmissionModule emission = particles.emission;
         emission.enabled = true;
         spriteRenderer.color = Color.lightGoldenRod;

@@ -7,7 +7,7 @@ public class PlayerSelector : MonoBehaviour
     public SpriteRenderer selectionBox;
     public bool canSelectSelf = false;
 
-    private const float InteractsPerSecond = 3f;
+    private const float InteractsPerSecond = 20f;
 
     private Player player;
     private GameController gameController;
@@ -41,7 +41,7 @@ public class PlayerSelector : MonoBehaviour
 
         Entity oldEntity = selectedEntity;
         // Clear selection if on cooldown
-        if (interactCooldown > 0f)
+        if (interactCooldown > 0f || !gameController.IsPlayerAlive)
         {
             selectedEntity = null;
         }
@@ -93,8 +93,9 @@ public class PlayerSelector : MonoBehaviour
         // Implement select logic
         if (selectedEntity != null)
         {
-            // Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
-            // selectionBox.transform.localScale = bounds.size * 1.5f; // OK since selection box is global
+            Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
+            float maxSize = Mathf.Max(bounds.size.x, bounds.size.y);
+            selectionBox.transform.localScale = new Vector3(maxSize, maxSize, 1) * 1.25f; // OK since selection box is global
             selectionBox.enabled = true;
             Debug.Log("Selected entity: " + selectedEntity.name);
         }

@@ -30,9 +30,9 @@ public class ProjectileEntityData : ReversibleEntityData
 [RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileEntity : ReversibleEntity
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] internal float lifetime = 5f;
-    [SerializeField] private float damage = 10f;
+    public float speed = 5f;
+    public float lifetime = 5f;
+    public float damage = 10f;
     public override bool DestroyableOnReverse => true;
 
     private Rigidbody2D rb;
@@ -43,7 +43,7 @@ public class ProjectileEntity : ReversibleEntity
         base.Start();
         hasCollided = false;
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = transform.up * speed;
+        SetSpeed(speed);
     }
 
     protected override void Update()
@@ -74,5 +74,11 @@ public class ProjectileEntity : ReversibleEntity
     protected override ReversibleEntityData CaptureState()
     {
         return new ProjectileEntityData(transform.position, transform.rotation, lifetime);
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        rb.linearVelocity = transform.up * speed;
     }
 }
