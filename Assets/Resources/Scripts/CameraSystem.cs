@@ -12,6 +12,7 @@ public class CameraSystem : MonoBehaviour
         QualitySettings.vSyncCount = 1;
 
         camera = GetComponent<Camera>();
+        camera.backgroundColor = Color.black;
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 

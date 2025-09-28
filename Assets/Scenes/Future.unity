@@ -374,7 +374,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1290,6 +1290,7 @@ MonoBehaviour:
   range: 5
   followDistance: 3
   speed: 6
+  rushSpeed: 0
   rotationSpeed: 180
   bulletsLeft: 3
   fireRate: 0.6

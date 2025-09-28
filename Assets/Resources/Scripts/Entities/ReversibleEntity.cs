@@ -81,7 +81,6 @@ public class ReversibleEntity : CollidableEntity, IInteractable
             ReverseTime--;
             if (ReverseTime <= 0)
             {
-                spriteRenderer.color = Color.white;
                 totalReverseTime = 0;
                 totalReverseFrames = 0;
                 totalFrameCount = 0;
@@ -90,6 +89,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
             return; // don't record state while reversing
         }
 
+        spriteRenderer.color = Color.white;
         // Add current state to history
         stateHistory.AddLast(CaptureState());
         // Remove first state if we exceed max history size

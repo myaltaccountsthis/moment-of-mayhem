@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileEntity
   speed: 8
   lifetime: 5
-  damage: 30
+  damage: 20
 --- !u!50 &6019551118770855976
 Rigidbody2D:
   serializedVersion: 5

@@ -59,6 +59,7 @@ public class Drone : ReversibleEntity
         Vector2 targetPosition = target.position;
         if (bulletsLeft > 0 && Vector2.Distance(transform.position, target.position) <= range)
         {
+            // TODO: don't let drone shoot if not rotated
             if (fireCooldown <= 0f)
             {
                 spriteRenderer.sprite = shootingSprite;
