@@ -4,16 +4,26 @@ using System.Collections.Generic;
 public class ReversibleEntityData
 {
     public readonly Vector3 position;
+    public readonly Quaternion rotation;
 
-    public ReversibleEntityData(Vector3 pos)
+    public ReversibleEntityData(Vector3 pos, Quaternion rot)
     {
         position = pos;
+        rotation = rot;
     }
 
     // Subclasses must cast to the respective Entity type in the Apply method
     public virtual void Apply(ReversibleEntity entity)
     {
         entity.SetRigidbodyPosition(position);
+        entity.SetRigidbodyRotation(rotation.eulerAngles.z);
+    }
+
+    public virtual ReversibleEntityData Lerp(ReversibleEntityData other, float t)
+    {
+        Vector3 newPos = Vector3.Lerp(position, other.position, t);
+        Quaternion newRot = Quaternion.Slerp(rotation, other.rotation, t);
+        return new ReversibleEntityData(newPos, newRot);
     }
 }
 
@@ -24,6 +34,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
     private readonly LinkedList<ReversibleEntityData> stateHistory = new();
 
     protected new Rigidbody2D rigidbody;
+    private ParticleSystem particles;
 
     private int ReverseTime = 0;
     public bool IsReversing => ReverseTime > 0;
@@ -38,6 +49,7 @@ public class ReversibleEntity : CollidableEntity, IInteractable
     {
         base.Awake();
         rigidbody = GetComponent<Rigidbody2D>();
+        particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
     }
 
     protected override void Start()
@@ -68,8 +80,8 @@ public class ReversibleEntity : CollidableEntity, IInteractable
                 ? rightState : stateHistory.Last.Previous!.Value;
 
             // Interpolate between the two states
-            Vector3 newPos = Vector3.Lerp(leftState.position, rightState.position, delta);
-            rigidbody.MovePosition(newPos);
+            ReversibleEntityData newState = leftState.Lerp(rightState, delta);
+            newState.Apply(this);
 
 
             if (DestroyableOnReverse && stateHistory.Count == 1)
@@ -89,26 +101,30 @@ public class ReversibleEntity : CollidableEntity, IInteractable
             return; // don't record state while reversing
         }
 
+        ParticleSystem.EmissionModule emission = particles.emission;
+        emission.enabled = false;
         spriteRenderer.color = Color.white;
+
         // Add current state to history
         stateHistory.AddLast(CaptureState());
         // Remove first state if we exceed max history size
         while (stateHistory.Count > MaxStateHistory)
         {
+            Debug.Log("Removing oldest state, count: " + stateHistory.Count);
             stateHistory.RemoveFirst();
         }
     }
 
     protected virtual ReversibleEntityData CaptureState()
     {
-        return new ReversibleEntityData(transform.position);
+        return new ReversibleEntityData(transform.position, transform.rotation);
     }
 
     public void Interact(Player player)
     {
         // if (IsReversing) return;
         // Start reversing time for this entity
-        Reverse(60, 30);
+        Reverse(120, 90);
     }
 
     // reverse timeInFrames: number of frames to rewind
@@ -123,12 +139,20 @@ public class ReversibleEntity : CollidableEntity, IInteractable
         totalFrameCount = stateHistory.Count;
         totalReverseTime = durationInFrames;
         totalReverseFrames = timeInFrames;
-        spriteRenderer.color = Color.lightGoldenRodYellow;
+        
+        ParticleSystem.EmissionModule emission = particles.emission;
+        emission.enabled = true;
+        spriteRenderer.color = Color.lightGoldenRod;
     }
 
     public void SetRigidbodyPosition(Vector3 position)
     {
         rigidbody.MovePosition(position);
+    }
+
+    public void SetRigidbodyRotation(float angle)
+    {
+        rigidbody.MoveRotation(angle);
     }
 
     void OnDestroy()

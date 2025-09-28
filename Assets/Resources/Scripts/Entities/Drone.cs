@@ -32,8 +32,8 @@ public class Drone : ReversibleEntity
         target = GameObject.FindGameObjectWithTag("Player").transform;
         defaultSprite = spriteRenderer.sprite;
         pulseSprite = Resources.Load<Sprite>("Textures/DronePulse");
-        shootingSprite = Resources.Load<Sprite>("Textures/DroneShoot");
-        rushingSprite = Resources.Load<Sprite>("Textures/DroneRush");
+        shootingSprite = Resources.Load<Sprite>("Textures/DroneRush");
+        rushingSprite = Resources.Load<Sprite>("Textures/DroneDive");
 
         if (rb.bodyType != RigidbodyType2D.Kinematic)
             Debug.LogWarning("Drone Rigidbody2D should be Kinematic for proper movement.");

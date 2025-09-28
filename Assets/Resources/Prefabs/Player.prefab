@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   healthDrainScale: 1
+  isInvincible: 0
   healthBar: {fileID: 0}
+  deathSprite: {fileID: -5985990161329794711, guid: 680cc436451a7864e95a1bb8c4e705f8, type: 3}
 --- !u!114 &7137040368937633991
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -51,11 +51,13 @@ public class GameController : MonoBehaviour
         reversibleEntities.Remove(entity);
     }
 
-    public void ReverseAll(int frames)
+    public void ReverseAll(int frames, int durationInFrames = -1)
     {
+        durationInFrames = durationInFrames == -1 ? frames * 3 / 4 : durationInFrames;
         foreach (var entity in reversibleEntities)
         {
-            entity.Reverse(frames, frames / 2);
+            Debug.Log("Reversing entity: " + entity.name);
+            entity.Reverse(frames, durationInFrames);
         }
     }
 

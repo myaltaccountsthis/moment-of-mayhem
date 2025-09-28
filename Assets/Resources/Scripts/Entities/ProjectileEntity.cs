@@ -4,7 +4,7 @@ public class ProjectileEntityData : ReversibleEntityData
 {
     public float lifetime;
 
-    public ProjectileEntityData(Vector3 pos, float lifetime) : base(pos)
+    public ProjectileEntityData(Vector3 pos, Quaternion rot, float lifetime) : base(pos, rot)
     {
         this.lifetime = lifetime;
     }
@@ -14,6 +14,15 @@ public class ProjectileEntityData : ReversibleEntityData
         base.Apply(entity);
         ProjectileEntity projectile = entity as ProjectileEntity;
         projectile.lifetime = lifetime;
+    }
+
+    public override ReversibleEntityData Lerp(ReversibleEntityData other, float t)
+    {
+        ProjectileEntityData otherProj = other as ProjectileEntityData;
+        Vector3 newPos = Vector3.Lerp(position, other.position, t);
+        Quaternion newRot = Quaternion.Slerp(rotation, other.rotation, t);
+        float newLifetime = Mathf.Lerp(lifetime, otherProj.lifetime, t);
+        return new ProjectileEntityData(newPos, newRot, newLifetime);
     }
 }
 
@@ -64,6 +73,6 @@ public class ProjectileEntity : ReversibleEntity
 
     protected override ReversibleEntityData CaptureState()
     {
-        return new ProjectileEntityData(transform.position, lifetime);
+        return new ProjectileEntityData(transform.position, transform.rotation, lifetime);
     }
 }

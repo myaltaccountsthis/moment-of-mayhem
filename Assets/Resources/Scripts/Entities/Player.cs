@@ -14,6 +14,7 @@ public class Player : ReversibleEntity
     public bool isInvincible = false;
 
     [SerializeField] private RectTransform healthBar;
+    [SerializeField] private Sprite deathSprite;
 
     private Animator animator;
     private InputAction moveAction;
@@ -44,7 +45,7 @@ public class Player : ReversibleEntity
     {
         base.Update();
 
-        TakeDamage(Time.deltaTime * healthDrainScale);
+        TakeDamage(Time.deltaTime * healthDrainScale, 0);
         if (isInvincible && !IsReversing)
         {
             isInvincible = false;
@@ -59,6 +60,8 @@ public class Player : ReversibleEntity
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if (IsReversing) return;
 
         Vector2 targetInput = moveAction.ReadValue<Vector2>();
         if (targetInput.sqrMagnitude > 1f)
@@ -89,9 +92,9 @@ public class Player : ReversibleEntity
         }
     }
 
-    public void TakeDamage(float amount, int reverseFrames = 0)
+    public void TakeDamage(float amount, int reverseFrames = 90)
     {
-        if (isInvincible || IsReversing) return;
+        if (IsReversing) return;
 
         // Implement health reduction logic here
         if (bonusHealth > 0)
@@ -104,12 +107,16 @@ public class Player : ReversibleEntity
         if (health <= 0)
         {
             UpdateHealthBar(false);
+            animator.enabled = false;
+            spriteRenderer.sprite = deathSprite;
+            rigidbody.simulated = false;
             gameController.OnPlayerDeath();
         }
         else
         {
             isInvincible = true;
-            gameController.ReverseAll(reverseFrames);
+            if (reverseFrames > 0)
+                gameController.ReverseAll(reverseFrames);
         }
     }
 

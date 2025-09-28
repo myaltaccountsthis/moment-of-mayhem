@@ -70,7 +70,9 @@ public class PlayerSelector : MonoBehaviour
         }
         UpdateSelectionOutline(oldEntity);
         if (selectedEntity != null)
+        {
             selectionBox.transform.position = selectedEntity.transform.position;
+        }
     }
 
     // Selected entity should have an outline component, should be updated to new one
@@ -91,8 +93,8 @@ public class PlayerSelector : MonoBehaviour
         // Implement select logic
         if (selectedEntity != null)
         {
-            Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
-            selectionBox.transform.localScale = bounds.size * 1.25f; // OK since selection box is global
+            // Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
+            // selectionBox.transform.localScale = bounds.size * 1.5f; // OK since selection box is global
             selectionBox.enabled = true;
             Debug.Log("Selected entity: " + selectedEntity.name);
         }
