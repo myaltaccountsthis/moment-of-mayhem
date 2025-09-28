@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4063939455641706275}
   - component: {fileID: -7051099203541025556}
   m_Layer: 0
-  m_Name: DroneSpawner
+  m_Name: PresentDroneSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -92,4 +92,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DroneSpawner
   dronePrefab: {fileID: 2322094315224366490, guid: 94022ccb9c351584689b6983e5442726, type: 3}
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnOffset: {x: 0, y: 0, z: 0}
