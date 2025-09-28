@@ -6,7 +6,7 @@ public class TimeBullet : ProjectileEntity
     private Sprite pulseSprite;
     private float timer = 0f;
     const float AnimCooldown = .5f;
-    const float RotationSpeed = 270f;
+    const float RotationSpeed = 1200f;
     protected override void Awake()
     {
         base.Awake();

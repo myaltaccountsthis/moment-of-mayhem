@@ -8,14 +8,13 @@ using NUnit.Framework;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private SceneAsset[] worlds;
+    [SerializeField] private SceneAsset nextWorld;
     [SerializeField] private Player player;
     private static readonly WaitForSecondsRealtime _waitForSeconds1 = new(1f);
     private readonly HashSet<ReversibleEntity> reversibleEntities = new();
     public InputActionAsset inputActions;
     public bool IsPlayerAlive { get; private set; }
     public Image coverImage;
-    private int currentWorldIndex = 0;
 
     void Awake()
     {
@@ -107,8 +106,7 @@ public class GameController : MonoBehaviour
 
     public void ToNextWorld()
     {
-        currentWorldIndex++;
-        Assert.IsTrue(currentWorldIndex < worlds.Length, "No more worlds available!");
+        Assert.IsNotNull(nextWorld, "Next world not assigned in GameController");
         coverImage.color = Color.black;
         coverImage.enabled = true;
         player.isInvincible = true;
@@ -116,7 +114,7 @@ public class GameController : MonoBehaviour
             LeanTween.alpha(coverImage.rectTransform, 0f, 1f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
             {
                 coverImage.enabled = false;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(worlds[currentWorldIndex].name);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nextWorld.name);
                 player.isInvincible = false;
             })
         ).setIgnoreTimeScale(true);

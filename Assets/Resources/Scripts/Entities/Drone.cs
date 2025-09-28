@@ -59,16 +59,21 @@ public class Drone : ReversibleEntity
         Vector2 targetPosition = target.position;
         if (bulletsLeft > 0 && Vector2.Distance(transform.position, target.position) <= range)
         {
-            // TODO: don't let drone shoot if not rotated
             if (fireCooldown <= 0f)
             {
-                spriteRenderer.sprite = shootingSprite;
-                timer = AnimCooldown;
+                Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-                Vector3 spawnLocation = transform.position + direction * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
-                Instantiate(bulletPrefab, spawnLocation, Quaternion.LookRotation(Vector3.forward, direction));
-                bulletsLeft--;
-                fireCooldown = 1f / fireRate;
+                if (Quaternion.Angle(transform.rotation, rotation) < 5f)
+                {
+                    // Shoot only if facing the player
+                    spriteRenderer.sprite = shootingSprite;
+                    timer = AnimCooldown;
+
+                    Vector3 spawnLocation = transform.position + direction * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
+                    Instantiate(bulletPrefab, spawnLocation, rotation);
+                    bulletsLeft--;
+                    fireCooldown = 1f / fireRate;
+                }
             }
             // Drone should stay a set distance away from the player while shooting
             targetPosition = target.position + (direction * followDistance);
