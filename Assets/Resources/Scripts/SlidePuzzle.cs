@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 
 public class SlidePuzzle : MonoBehaviour
@@ -17,7 +16,7 @@ public class SlidePuzzle : MonoBehaviour
     private Vector2Int targetPos;
     private int currMovingIndex = -1;
     private const float MoveDuration = 1f;
-    
+
     public bool CanMove => moveTimer <= 0f;
 
     public Vector2Int toGridPosition(Vector3 pos)
@@ -43,7 +42,7 @@ public class SlidePuzzle : MonoBehaviour
             SlidePuzzleObject obj = objects[i];
             Vector3 pos = obj.transform.position;
             Vector2Int gridPos = toGridPosition(pos);
-            Assert.IsTrue(gridPos.x >= 0 && gridPos.x < gridWidth && gridPos.y >= 0 && gridPos.y < gridHeight, "Object out of bounds");
+            Debug.Assert(gridPos.x >= 0 && gridPos.x < gridWidth && gridPos.y >= 0 && gridPos.y < gridHeight, "Object out of bounds");
             grid[gridPos.x, gridPos.y] = i + 1; // Mark as occupied
             obj.gridPosition = gridPos;
             objectToIndex[obj] = i;

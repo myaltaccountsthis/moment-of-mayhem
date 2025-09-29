@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using NUnit.Framework;
 using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
@@ -114,7 +113,7 @@ public class GameController : MonoBehaviour
 
     public void ToNextWorld()
     {
-        Assert.IsNotNull(nextWorld, "Next world not assigned in GameController");
+        Debug.Assert(nextWorld != null, "Next world not assigned in GameController");
         coverImage.color = Color.black;
         coverImage.enabled = true;
         player.isInvincible = true;
