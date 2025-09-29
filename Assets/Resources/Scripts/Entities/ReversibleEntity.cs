@@ -86,7 +86,6 @@ public class ReversibleEntity : CollidableEntity, IInteractable
 
             if (DestroyableOnReverse && stateHistory.Count == 1)
             {
-                gameController.entityDestroyed.Play();
                 Destroy(gameObject);
                 return;
             }

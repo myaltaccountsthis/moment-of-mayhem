@@ -23,5 +23,6 @@ public class Obstacle : Entity, IInteractable
         used = true;
         spriteRenderer.sprite = reverseSprite;
         col.enabled = false;
+        gameController.entityDestroyed.Play();
     }
 }
