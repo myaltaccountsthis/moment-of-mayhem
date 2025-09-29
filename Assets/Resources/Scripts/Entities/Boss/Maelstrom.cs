@@ -57,7 +57,7 @@ class Maelstrom : BossAttack
                     if (bullet != null)
                     {
                         bullet.SetSpeed(0);
-                        bullet.GetComponent<SpriteRenderer>().sprite = reverseSprite;
+                        bullet.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = reverseSprite;
                     }
                     bulletsDone++;
                 });
