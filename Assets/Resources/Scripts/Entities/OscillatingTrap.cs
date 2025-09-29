@@ -47,6 +47,7 @@ public class OscillatingTrap : DamagePart, IInteractable
         if (!isSlowed)
         {
             isSlowed = true;
+            gameController.entityReversed.Play();
             Invoke(nameof(ResetSpeed), slowDuration);
             var emission = particles.emission;
             emission.enabled = true;

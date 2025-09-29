@@ -103,6 +103,7 @@ public class FiringDevice : CollidableEntity, IInteractable
     public void Interact(Player player)
     {
         isSlowed = true;
+        gameController.entityReversed.Play();
         Invoke(nameof(ResetSpeed), slowedDuration);
         spriteRenderer.color = Color.lightGoldenRod;
         var emission = particles.emission;
