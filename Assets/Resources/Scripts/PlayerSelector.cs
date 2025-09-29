@@ -7,7 +7,7 @@ public class PlayerSelector : MonoBehaviour
     public SpriteRenderer selectionBox;
     public bool canSelectSelf = false;
 
-    private const float InteractsPerSecond = 10f;
+    private const float InteractsPerSecond = 12f;
     private const float CircleRadius = 0.3f;
 
     private Player player;

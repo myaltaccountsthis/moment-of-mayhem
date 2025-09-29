@@ -30,6 +30,9 @@ public class Boss : DamagePart
     private float timeUntilNextAttack;
     private BossAttack currentAttack;
 
+    private List<Drone> drones;
+    [SerializeField] private Drone[] dronePrefabs;
+
     protected override void Awake()
     {
         base.Awake();
@@ -45,6 +48,7 @@ public class Boss : DamagePart
         currentAttackIndex = 0;
         timeUntilNextAttack = 3f;
         currentAttack = attacks[0];
+        drones = new();
     }
 
     protected override void Update()
@@ -93,6 +97,12 @@ public class Boss : DamagePart
     public void AdvancePhase()
     {
         canAttack = false;
+        foreach (var drone in drones)
+        {
+            if (drone != null)
+                Destroy(drone.gameObject);
+        }
+
         if (phase == BossPhase.Phase1)
             phase = BossPhase.Phase2;
         else if (phase == BossPhase.Phase2)
@@ -124,6 +134,17 @@ public class Boss : DamagePart
             currentAttackIndex = 0;
             timeUntilNextAttack = 3f;
             currentAttack = attacks[0];
+
+            int droneCount = newPhase * (newPhase + 1) / 2;
+            float angleStep = 360f / droneCount;
+            for (int i = 0; i < droneCount; i++)
+            {
+                float angle = i * angleStep * Mathf.Deg2Rad;
+                Vector3 offset = new(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+                offset *= 2f;
+                Drone drone = Instantiate(dronePrefabs[newPhase], transform.position + offset, Quaternion.identity);
+                drones.Add(drone);
+            }
         });
     }
 }

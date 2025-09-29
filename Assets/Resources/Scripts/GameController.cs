@@ -34,7 +34,6 @@ public class GameController : MonoBehaviour
         IsPlayerAlive = true;
         Time.timeScale = 0f;
 
-
         FadeFromBlack(1f, () =>
         {
             Time.timeScale = 1f;
