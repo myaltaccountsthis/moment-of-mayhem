@@ -37,7 +37,9 @@ public class OscillatingTrap : DamagePart, IInteractable
 
         float eased = LeanTween.easeInOutSine(0f, 1f, u);
         // interpolate between endpoints 
-        rb.position = Vector3.LerpUnclamped(leftPos.position, rightPos.position, eased);
+        rb.position = startRight 
+            ? Vector2.LerpUnclamped(rightPos.position, leftPos.position, eased)
+            : Vector2.LerpUnclamped(leftPos.position, rightPos.position, eased);
     }
 
     public void Interact(Player player)
