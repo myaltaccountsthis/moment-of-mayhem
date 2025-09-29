@@ -14,10 +14,10 @@ public class Saw : OscillatingTrap
         sawBlade.transform.rotation = Quaternion.Euler(fromEuler);
     }
     
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         // advance time / movement first
-        base.Update();
+        base.FixedUpdate();
 
         float u = Mathf.PingPong(elapsed / oscillationTime, 1f);
         float eased = LeanTween.easeInOutSine(0f, 1f, u);

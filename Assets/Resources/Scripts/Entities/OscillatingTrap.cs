@@ -13,29 +13,31 @@ public class OscillatingTrap : DamagePart, IInteractable
     public float slowedTimeScale;
     
     private ParticleSystem particles;
+    protected Rigidbody2D rb;
     public bool isSlowed = false;
     protected float elapsed = 0f;
     
     protected float timeScale => isSlowed ? slowedTimeScale : 1f;
-    
+
     protected override void Awake()
     {
         base.Awake();
         transform.position = startRight ? rightPos.position : leftPos.position;
         particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         // advance time (scaled)
-        elapsed += Time.deltaTime * timeScale;
+        elapsed += Time.fixedDeltaTime * timeScale;
         float u = Mathf.PingPong(elapsed / oscillationTime, 1f);
 
         float eased = LeanTween.easeInOutSine(0f, 1f, u);
         // interpolate between endpoints 
-        transform.position = Vector3.LerpUnclamped(leftPos.position, rightPos.position, eased);
+        rb.position = Vector3.LerpUnclamped(leftPos.position, rightPos.position, eased);
     }
 
     public void Interact(Player player)

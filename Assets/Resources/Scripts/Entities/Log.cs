@@ -2,7 +2,15 @@
 
 public class Log : OscillatingTrap
 {
+    private Sprite log1;
+    [SerializeField] private Sprite log2;
     const float FlipDuration = 0.2f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        log1 = spriteRenderer.sprite;
+    }
     protected override void Update()
     {
         // advance time / movement first
@@ -10,11 +18,11 @@ public class Log : OscillatingTrap
 
         if (elapsed % FlipDuration < FlipDuration / 2f)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.sprite = log1;
         }
         else
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.sprite = log2;
         }
     }
 }
