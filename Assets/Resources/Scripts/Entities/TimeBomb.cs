@@ -13,6 +13,8 @@ public class TimeBomb : CollidableEntity, IInteractable
     [SerializeField] private DamagePart[] explosionBlocks;
     private float timer = 0f;
     const float AnimCooldown = .5f;
+    
+    private AudioSource explosionSound;
 
     protected override void Awake()
     {
@@ -21,6 +23,7 @@ public class TimeBomb : CollidableEntity, IInteractable
         safeSprite = Resources.Load<Sprite>("Textures/Entities/Time-Bomb-Priming");
         safeSprite1 = Resources.Load<Sprite>("Textures/Entities/Time-Bomb-Priming-2");
         explodingSprite = Resources.Load<Sprite>("Textures/Entities/Time-Bomb-Exploding");
+        explosionSound = GetComponent<AudioSource>();
         Debug.Assert(safeSprite != null, "TimeBomb safe sprite not found in Resources/Textures/Entities/Time-Bomb-Priming");
         Debug.Assert(safeSprite1 != null, "TimeBomb safe sprite 1 not found in Resources/Textures/Entities/Time-Bomb-Priming-2");
         Debug.Assert(explodingSprite != null, "TimeBomb exploding sprite not found in Resources/Textures/Entities/Time-Bomb-Exploding");
@@ -64,6 +67,10 @@ public class TimeBomb : CollidableEntity, IInteractable
             if (countdown <= 0f)
             {
                 // Explode
+                if (explosionSound != null)
+                {
+                    explosionSound.Play();
+                }
                 foreach (DamagePart block in explosionBlocks)
                 {
                     block.gameObject.SetActive(true);
