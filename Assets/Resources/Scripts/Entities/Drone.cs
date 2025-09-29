@@ -24,6 +24,8 @@ public class Drone : ReversibleEntity
     private float fireCooldown;
     private float timer = 0f;
     private const float AnimCooldown = .5f;
+    
+    private AudioSource fireSound;
 
     protected override void Awake()
     {
@@ -34,6 +36,7 @@ public class Drone : ReversibleEntity
         pulseSprite = Resources.Load<Sprite>("Textures/DronePulse");
         shootingSprite = Resources.Load<Sprite>("Textures/DroneRush");
         rushingSprite = Resources.Load<Sprite>("Textures/DroneDive");
+        fireSound = GetComponent<AudioSource>();
 
         if (rb.bodyType != RigidbodyType2D.Kinematic)
             Debug.LogWarning("Drone Rigidbody2D should be Kinematic for proper movement.");
@@ -71,6 +74,7 @@ public class Drone : ReversibleEntity
 
                     Vector3 spawnLocation = transform.position + direction * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
                     Instantiate(bulletPrefab, spawnLocation, rotation);
+                    if (fireSound != null) fireSound.Play();
                     bulletsLeft--;
                     fireCooldown = 1f / fireRate;
                 }

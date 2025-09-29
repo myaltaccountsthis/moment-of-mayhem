@@ -30,7 +30,7 @@ public class Crossbow : FiringDevice
         }
 
         float start = (swingDir > 0) ? -RotationAngle : +RotationAngle;
-        float end   = (swingDir > 0) ? +RotationAngle : -RotationAngle;
+        float end = (swingDir > 0) ? +RotationAngle : -RotationAngle;
         float easedAngle = LeanTween.easeInOutSine(start, end, halfPhase01);
 
         wind.transform.rotation = Quaternion.Euler(0f, 0f, easedAngle);

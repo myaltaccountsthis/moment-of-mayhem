@@ -9,8 +9,6 @@ public class FiringDevice : CollidableEntity, IInteractable
     public float mainDelay;
     public float slowedDelay;
     
-    // public AudioSource fireSound;
-
     [SerializeField] private Sprite inactiveSprite;
     [SerializeField] private Sprite readySprite;
     [SerializeField] private Sprite shootingSprite;
@@ -23,6 +21,8 @@ public class FiringDevice : CollidableEntity, IInteractable
     private Coroutine coroutine;
     private ParticleSystem particles;
 
+    private AudioSource fireSound;
+
     protected bool IsSlowed => isSlowed;
     protected float CurrentDelay => currentDelay;
 
@@ -30,6 +30,7 @@ public class FiringDevice : CollidableEntity, IInteractable
     {
         base.Awake();
         direction = direction.normalized;
+        fireSound = GetComponent<AudioSource>();
         particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
     }
 
@@ -71,9 +72,11 @@ public class FiringDevice : CollidableEntity, IInteractable
             ProjectileEntity proj = Instantiate(projectilePrefab, GetProjectileStartPosition(), Quaternion.identity);
             proj.transform.up = direction;
 
-            // AudioSource audio = Instantiate(fireSound, transform.position, Quaternion.identity);
-            // audio.Play();
-            // Destroy(audio.gameObject, audio.clip.length);
+            if (fireSound != null)
+            {
+                fireSound.Play();
+            }
+
             spriteRenderer.sprite = shootingSprite2 is null ? shootingSprite : (ct % 2 == 0 ? shootingSprite : shootingSprite2);
             ct++;
 

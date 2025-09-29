@@ -125,6 +125,9 @@ public class ReversibleEntity : CollidableEntity, IInteractable
         // if (IsReversing) return;
         // Start reversing time for this entity
         Reverse(120, 90);
+        AudioSource src = gameController.entityReversed;
+        AudioClip clip = src.clip;
+        src.PlayOneShot(clip);
     }
 
     // reverse timeInFrames: number of frames to rewind

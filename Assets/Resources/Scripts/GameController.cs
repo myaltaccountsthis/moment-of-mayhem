@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     public bool IsPlayerAlive { get; private set; }
     public Image coverImage;
 
+    public AudioSource everythingReversed;
+    public AudioSource entityReversed;
+
     void Awake()
     {
         Debug.Assert(inputActions != null, "Input Actions not assigned in GameController");
@@ -71,6 +74,7 @@ public class GameController : MonoBehaviour
     public void ReverseAll(int frames, int durationInFrames = -1)
     {
         durationInFrames = durationInFrames == -1 ? frames * 3 / 4 : durationInFrames;
+        everythingReversed.Play();
         foreach (var entity in reversibleEntities)
         {
             entity.Reverse(frames, durationInFrames);
