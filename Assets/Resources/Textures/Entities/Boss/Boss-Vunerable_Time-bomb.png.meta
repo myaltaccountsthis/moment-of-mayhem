@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: e576bcf316dcb324dbce3f65ea1b45cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6182213069849790358
+    second: Boss-Vunerable_Time-bomb_0
+  - first:
+      213: 2128894768600516018
+    second: Boss-Vunerable_Time-bomb_1
+  - first:
+      213: -3810574617603966054
+    second: Boss-Vunerable_Time-bomb_2
+  - first:
+      213: -2107683632243639682
+    second: Boss-Vunerable_Time-bomb_3
+  - first:
+      213: -5467480401477199787
+    second: Boss-Vunerable_Time-bomb_4
+  - first:
+      213: 500087826771361798
+    second: Boss-Vunerable_Time-bomb_5
+  - first:
+      213: 4663194179006584453
+    second: Boss-Vunerable_Time-bomb_6
+  - first:
+      213: 8769088079072317264
+    second: Boss-Vunerable_Time-bomb_7
+  - first:
+      213: 2074486344622499730
+    second: Boss-Vunerable_Time-bomb_8
+  - first:
+      213: -4493162668787849419
+    second: Boss-Vunerable_Time-bomb_9
+  - first:
+      213: -4074028738675479917
+    second: Boss-Vunerable_Time-bomb_10
+  - first:
+      213: -3680025857734198414
+    second: Boss-Vunerable_Time-bomb_11
+  - first:
+      213: -2055820159319917982
+    second: Boss-Vunerable_Time-bomb_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 114
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6978c224802abc550800000000000000
+      internalID: 6182213069849790358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 110
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b50f9e338a5b8d10800000000000000
+      internalID: 2128894768600516018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 119
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9b7897139e1e1bc0800000000000000
+      internalID: -3810574617603966054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 120
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a763947e000c2e0800000000000000
+      internalID: -2107683632243639682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 110
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5589a85fa8b9f14b0800000000000000
+      internalID: -5467480401477199787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_5
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 114
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60044379a3ba0f600800000000000000
+      internalID: 500087826771361798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_6
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 104
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5865b5e266ef6b040800000000000000
+      internalID: 4663194179006584453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_7
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 87
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05fc735b52f02b970800000000000000
+      internalID: 8769088079072317264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_8
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 66
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2976f9ed65e0acc10800000000000000
+      internalID: 2074486344622499730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_9
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 104
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 537aad8cb5415a1c0800000000000000
+      internalID: -4493162668787849419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_10
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 87
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ae38282742677c0800000000000000
+      internalID: -4074028738675479917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_11
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 72
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b3081eafbedecc0800000000000000
+      internalID: -3680025857734198414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Vunerable_Time-bomb_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 72
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a36a115724873e0800000000000000
+      internalID: -2055820159319917982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boss-Vunerable_Time-bomb_0: 6182213069849790358
+      Boss-Vunerable_Time-bomb_1: 2128894768600516018
+      Boss-Vunerable_Time-bomb_10: -4074028738675479917
+      Boss-Vunerable_Time-bomb_11: -3680025857734198414
+      Boss-Vunerable_Time-bomb_12: -2055820159319917982
+      Boss-Vunerable_Time-bomb_2: -3810574617603966054
+      Boss-Vunerable_Time-bomb_3: -2107683632243639682
+      Boss-Vunerable_Time-bomb_4: -5467480401477199787
+      Boss-Vunerable_Time-bomb_5: 500087826771361798
+      Boss-Vunerable_Time-bomb_6: 4663194179006584453
+      Boss-Vunerable_Time-bomb_7: 8769088079072317264
+      Boss-Vunerable_Time-bomb_8: 2074486344622499730
+      Boss-Vunerable_Time-bomb_9: -4493162668787849419
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -95,8 +95,8 @@ public class PlayerSelector : MonoBehaviour
         if (selectedEntity != null)
         {
             Bounds bounds = selectedEntity.GetComponent<Collider2D>().bounds;
-            float maxSize = Mathf.Max(bounds.size.x, bounds.size.y);
-            selectionBox.transform.localScale = new Vector3(maxSize, maxSize, 1) * 1.25f; // OK since selection box is global
+            float size = Mathf.Sqrt(bounds.size.x * bounds.size.y);
+            selectionBox.transform.localScale = new Vector3(size, size, 1) * 1.25f; // OK since selection box is global
             selectionBox.enabled = true;
             // Debug.Log("Selected entity: " + selectedEntity.name);
         }

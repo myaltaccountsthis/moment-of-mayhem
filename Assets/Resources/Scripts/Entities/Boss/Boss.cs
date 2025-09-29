@@ -10,6 +10,7 @@ public enum BossPhase
     Defeated
 }
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Boss : DamagePart
 {
     private const int DifficultiesPerPhase = 3;
@@ -17,6 +18,12 @@ public class Boss : DamagePart
     [SerializeField] private BossAttack[] attacks;
     private BossPhase phase = BossPhase.Phase1;
     private int currentDifficulty = 0;
+
+    private Sprite defaultSprite;
+    [SerializeField] private Sprite[] chargingSprites;
+    private int chargingSpriteIndex = 0;
+    private const float chargingSpriteInterval = .3f;
+    private float chargingSpriteTimer = 0f;
 
     private bool canAttack;
     private int currentAttackIndex;
@@ -27,6 +34,7 @@ public class Boss : DamagePart
     {
         base.Awake();
         Debug.Assert(attacks.Length > 0, "Boss must have at least one attack.");
+        defaultSprite = spriteRenderer.sprite;
     }
 
     protected override void Start()
@@ -48,7 +56,21 @@ public class Boss : DamagePart
         if (timeUntilNextAttack > 0)
         {
             if (!currentAttack.IsAttacking)
+            {
                 timeUntilNextAttack -= Time.deltaTime;
+                if (timeUntilNextAttack < 2f)
+                {
+                    chargingSpriteTimer += Time.deltaTime;
+                    if (chargingSpriteTimer >= chargingSpriteInterval)
+                    {
+                        chargingSpriteTimer = 0f;
+                        chargingSpriteIndex = (chargingSpriteIndex + 1) % chargingSprites.Length;
+                        spriteRenderer.sprite = chargingSprites[chargingSpriteIndex];
+                    }
+                }
+                else
+                    spriteRenderer.sprite = defaultSprite;
+            }
             return;
         }
 
@@ -61,10 +83,11 @@ public class Boss : DamagePart
                 currentDifficulty++;
         }
 
-        timeUntilNextAttack = currentAttack.cooldown;
+        timeUntilNextAttack = 4f;
         Debug.Log("Using attack: " + currentAttack.GetType().Name);
         currentAttack.difficulty = currentDifficulty;
         currentAttack.UseAttack();
+        spriteRenderer.sprite = currentAttack.bossSprite;
     }
 
     public void AdvancePhase()

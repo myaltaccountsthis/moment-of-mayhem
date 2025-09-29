@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b71ec9829ad6e604c890f936635762e9
+guid: a02ab1ac585461b4996e69226e595083
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3166645449146797153
-    second: TimeBulletHit_0
+      213: 8198318073966177913
+    second: Boss-Charge_0
+  - first:
+      213: -7435727318386876547
+    second: Boss-Charge_1
+  - first:
+      213: -1956848102307930021
+    second: Boss-Charge_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TimeBulletHit_0
+      name: Boss-Charge_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 29
-        height: 30
+        x: 20
+        y: 93
+        width: 6
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f937ff9ddb0dd04d0800000000000000
-      internalID: -3166645449146797153
+      spriteID: 97e2b6a0ad646c170800000000000000
+      internalID: 8198318073966177913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Charge_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 84
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7fd1ec666dfec890800000000000000
+      internalID: -7435727318386876547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Charge_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 93
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50e98ec401e7d4e0800000000000000
+      internalID: -1956848102307930021
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TimeBulletHit_0: -3166645449146797153
+      Boss-Charge_0: 8198318073966177913
+      Boss-Charge_1: -7435727318386876547
+      Boss-Charge_2: -1956848102307930021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
