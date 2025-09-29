@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b71ec9829ad6e604c890f936635762e9
+guid: ea91a1403c74874489882aa4a054863a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3166645449146797153
-    second: TimeBulletHit_0
+      213: -87469432506072212
+    second: Boss-Charge-Pulse_0
+  - first:
+      213: 3978520679723353985
+    second: Boss-Charge-Pulse_1
+  - first:
+      213: 1925364631813214535
+    second: Boss-Charge-Pulse_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TimeBulletHit_0
+      name: Boss-Charge-Pulse_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 29
-        height: 30
+        x: 20
+        y: 93
+        width: 6
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f937ff9ddb0dd04d0800000000000000
-      internalID: -3166645449146797153
+      spriteID: c6345cab30f39cef0800000000000000
+      internalID: -87469432506072212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Charge-Pulse_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 84
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 187c476aa7b863730800000000000000
+      internalID: 3978520679723353985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-Charge-Pulse_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 93
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741d35e7ee448ba10800000000000000
+      internalID: 1925364631813214535
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TimeBulletHit_0: -3166645449146797153
+      Boss-Charge-Pulse_0: -87469432506072212
+      Boss-Charge-Pulse_1: 3978520679723353985
+      Boss-Charge-Pulse_2: 1925364631813214535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

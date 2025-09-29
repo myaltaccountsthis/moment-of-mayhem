@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
     private readonly Color[] backgroundColors = new Color[] {
         new(0f, 0f, 0f), // Void
         new(.4f, .3f, .9f), // Far Future
-        new(.3f, .3f, .9f), // Future
+        new(.4f, .4f, .8f), // Future
         new(.2f, .8f, .4f)  // Present
     };
     public LTDescr NextBossLevel(BossPhase phase, System.Action callback = null)

@@ -10,7 +10,7 @@ public class BossTimeBomb : CollidableEntity, IInteractable
     public float fuseTime = 15f;
     public float minSpeed = -3f, maxSpeed = 6.5f;
     public float acceleration = 2f;
-    public float damage = 50f;
+    public float damage = 40f;
     public float explosionScale = 1f;
 
     private float timer;
