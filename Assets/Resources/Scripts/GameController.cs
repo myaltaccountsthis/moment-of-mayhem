@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEditor;
 using NUnit.Framework;
 using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private SceneAsset nextWorld;
+    [SerializeField] private string nextWorld;
     [SerializeField] private Player player;
     private static readonly WaitForSecondsRealtime _waitForSeconds1 = new(1f);
     private readonly HashSet<ReversibleEntity> reversibleEntities = new();
@@ -123,7 +122,7 @@ public class GameController : MonoBehaviour
             LeanTween.alpha(coverImage.rectTransform, 0f, 1f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnComplete(() =>
             {
                 coverImage.enabled = false;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(nextWorld.name);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nextWorld);
                 player.isInvincible = false;
             })
         ).setIgnoreTimeScale(true);

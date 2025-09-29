@@ -7335,8 +7335,8 @@ PrefabInstance:
       objectReference: {fileID: 4587610976816532832}
     - target: {fileID: 4767050994927386982, guid: 273bfe55f6f63e149888d8984a7a3880, type: 3}
       propertyPath: nextWorld
-      value: 
-      objectReference: {fileID: 102900000, guid: d9220da34bbdf234e926df8079da2fac, type: 3}
+      value: Future
+      objectReference: {fileID: 0}
     - target: {fileID: 4767050994927386982, guid: 273bfe55f6f63e149888d8984a7a3880, type: 3}
       propertyPath: coverImage
       value: 
