@@ -9,6 +9,7 @@ class Maelstrom : BossAttack
     private const float DefaultLifetime = 1000f;
     private static readonly WaitForSeconds _waitForSeconds2 = new(2);
     [SerializeField] private ProjectileEntity bulletPrefab;
+    [SerializeField] private Sprite reverseSprite;
     private List<ProjectileEntity> bullets;
 
     private const float FireRatePerDirection = 2f;
@@ -54,7 +55,10 @@ class Maelstrom : BossAttack
                 LeanTween.delayedCall(timeUntilFreeze, () =>
                 {
                     if (bullet != null)
+                    {
                         bullet.SetSpeed(0);
+                        bullet.GetComponent<SpriteRenderer>().sprite = reverseSprite;
+                    }
                     bulletsDone++;
                 });
             }

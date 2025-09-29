@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BossTimeBomb : CollidableEntity, IInteractable
 {
-    private const float InteractInterval = .1f;
+    private const float InteractInterval = .01f;
     private const float InteractAcceleration = .6f;
 
     public float fuseTime = 15f;

@@ -21591,7 +21591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &904470698
 Transform:
   m_ObjectHideFlags: 0
@@ -21614,7 +21614,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904470697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -42786,6 +42786,10 @@ MonoBehaviour:
   chargingSprites:
   - {fileID: 21300000, guid: a02ab1ac585461b4996e69226e595083, type: 3}
   - {fileID: 21300000, guid: ea91a1403c74874489882aa4a054863a, type: 3}
+  dronePrefabs:
+  - {fileID: 0}
+  - {fileID: -1390409796446737516, guid: 33d72feb42448d141abc606ef0af8ed5, type: 3}
+  - {fileID: -1390409796446737516, guid: ca0e69f7a7f750b46bf4af838fbbf847, type: 3}
 --- !u!114 &2105092004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42817,6 +42821,7 @@ MonoBehaviour:
   bossSprite: {fileID: 21300000, guid: a1045513b6acb084abc11ce74a878a3d, type: 3}
   difficulty: 0
   bulletPrefab: {fileID: 1515132268249562409, guid: aaec5ca8755e35c46b35b2c7cdc8611e, type: 3}
+  reverseSprite: {fileID: 21300000, guid: 54ce21cb09e48f743ad4c1a626ac72aa, type: 3}
 --- !u!50 &2105092006
 Rigidbody2D:
   serializedVersion: 5
