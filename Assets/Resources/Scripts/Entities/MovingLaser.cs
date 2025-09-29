@@ -6,9 +6,17 @@ public class MovingLaser : Entity, IInteractable
     [SerializeField] private float rotEnd;
     [SerializeField] private float rotTime;
     [SerializeField] private DamagePart laser;
+    private ParticleSystem particles;
     private float rotTimer = 0f;
     private float slowTimer = 0f;
     private bool forward = true;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        particles = Instantiate(Resources.Load<ParticleSystem>("Prefabs/Particles"), transform);
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -23,6 +31,12 @@ public class MovingLaser : Entity, IInteractable
         {
             slowTimer -= dt;
             slowTimer = Mathf.Max(0f, slowTimer);
+            if (slowTimer == 0f)
+            {
+                ParticleSystem.EmissionModule emission = particles.emission;
+                emission.enabled = false;
+                spriteRenderer.color = Color.white;
+            }
             dt *= 0.25f;
         }
         if (forward)
@@ -54,5 +68,8 @@ public class MovingLaser : Entity, IInteractable
     public void Interact(Player player)
     {
         slowTimer = 2f;
+        ParticleSystem.EmissionModule emission = particles.emission;
+        emission.enabled = true;
+        spriteRenderer.color = Color.lightGoldenRod;
     }
 }
