@@ -5351,9 +5351,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue
       objectReference: {fileID: 0}
-    - target: {fileID: 1245946135237526933, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -125
+    - target: {fileID: 993739124885457250, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 993739124885457250, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4917647870355272543, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
       propertyPath: m_Pivot.x
@@ -5435,10 +5439,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8295880174281275052, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
-      propertyPath: slate
-      value: 
-      objectReference: {fileID: 1136920042}
+    - target: {fileID: 6049950736732188761, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049950736732188761, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295880174281275052, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
       propertyPath: inactivePos
       value: 
@@ -5454,11 +5462,6 @@ PrefabInstance:
 --- !u!224 &1136920041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4917647870355272543, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
-  m_PrefabInstance: {fileID: 1136920040}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1136920042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3531080811492293646, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
   m_PrefabInstance: {fileID: 1136920040}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1136920043 stripped
@@ -7042,7 +7045,7 @@ PrefabInstance:
     - target: {fileID: -5992966364780717012, guid: 84ea66fa0f265c44f8542e040f818937, type: 3}
       propertyPath: dialogueText
       value: What? How did I get here? There seems to be no way out. Guess I'll have
-        to expore this place...
+        to explore this place...
       objectReference: {fileID: 0}
     - target: {fileID: -5992966364780717012, guid: 84ea66fa0f265c44f8542e040f818937, type: 3}
       propertyPath: dialogueManager
