@@ -74,7 +74,10 @@ public class Drone : ReversibleEntity
 
                     Vector3 spawnLocation = transform.position + direction * bulletPrefab.GetComponent<Collider2D>().bounds.extents.y / 2f;
                     Instantiate(bulletPrefab, spawnLocation, rotation);
-                    if (fireSound != null) fireSound.Play();
+                    if (fireSound != null)
+                    {
+                        fireSound.Play();
+                    }
                     bulletsLeft--;
                     fireCooldown = 1f / fireRate;
                 }
