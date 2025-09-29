@@ -4965,6 +4965,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 1245946135237526933, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -125
+      objectReference: {fileID: 0}
     - target: {fileID: 4917647870355272543, guid: 08da6db3b2fe0cc42a4831a71c1914af, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6372,6 +6376,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4587610976816532832}
+    - target: {fileID: 4767050994927386982, guid: 273bfe55f6f63e149888d8984a7a3880, type: 3}
+      propertyPath: nextWorld
+      value: 
+      objectReference: {fileID: 102900000, guid: d9220da34bbdf234e926df8079da2fac, type: 3}
     - target: {fileID: 4767050994927386982, guid: 273bfe55f6f63e149888d8984a7a3880, type: 3}
       propertyPath: coverImage
       value: 
