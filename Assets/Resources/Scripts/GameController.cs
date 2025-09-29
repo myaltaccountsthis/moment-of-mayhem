@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 
     public AudioSource everythingReversed;
     public AudioSource entityReversed;
+    public AudioSource entityDestroyed;
 
     void Awake()
     {
