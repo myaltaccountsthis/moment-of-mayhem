@@ -8,18 +8,25 @@ public class Crossbow : FiringDevice
     private float halfPhase01 = 0.75f; 
     private int swingDir = +1;
 
+    // NEW: remember the original rotation as the center
+    private Quaternion baseRotation;
+
     protected override void Awake()
     {
         base.Awake();
-        wind.transform.rotation = Quaternion.Euler(0, 0, -RotationAngle);
-        direction = Quaternion.Euler(0, 0, -RotationAngle) * Vector2.up;
+
+        baseRotation = wind.transform.rotation; // capture center
+
+        var startRot = baseRotation * Quaternion.Euler(0, 0, -RotationAngle);
+        wind.transform.rotation = startRot;
+
+        direction = (startRot * Vector2.up).normalized;
     }
 
     protected override void Update()
     {
         base.Update();
 
-        // One half-swing per firing cycle
         float halfPeriod = Mathf.Max(0.0001f, CurrentDelay);
 
         halfPhase01 += Time.deltaTime / halfPeriod;
@@ -29,12 +36,14 @@ public class Crossbow : FiringDevice
             swingDir *= -1;
         }
 
-        float start = (swingDir > 0) ? -RotationAngle : +RotationAngle;
-        float end = (swingDir > 0) ? +RotationAngle : -RotationAngle;
-        float easedAngle = LeanTween.easeInOutSine(start, end, halfPhase01);
+        float start = (swingDir > 0) ? -RotationAngle : +RotationAngle; 
+        float end   = (swingDir > 0) ? +RotationAngle : -RotationAngle;
+        float easedOffset = LeanTween.easeInOutSine(start, end, halfPhase01);
 
-        wind.transform.rotation = Quaternion.Euler(0f, 0f, easedAngle);
-        direction = (Quaternion.Euler(0f, 0f, easedAngle) * Vector2.up).normalized;
+        Quaternion rot = baseRotation * Quaternion.Euler(0f, 0f, easedOffset);
+        wind.transform.rotation = rot;
+
+        direction = (rot * Vector2.up).normalized;
     }
 
     protected override void OnWait(float seconds) { }
