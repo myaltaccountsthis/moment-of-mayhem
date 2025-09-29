@@ -217,8 +217,8 @@ MonoBehaviour:
   rightPos: {fileID: 4626564664636386502}
   startRight: 0
   oscillationTime: 3
-  slowDuration: 0
-  slowedTimeScale: 0
+  slowDuration: 1.5
+  slowedTimeScale: 0.5
   isSlowed: 0
   log2: {fileID: 21300000, guid: 1214d7a0ed0b87e439e2a71fb72f487e, type: 3}
 --- !u!1 &7191331578579523529
