@@ -744,63 +744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf4da819308b524993c3f4424faab86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamagePart
---- !u!1001 &281387114
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 27.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 30.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486455475028892743, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_Name
-      value: FarFutureDroneSpawner (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
 --- !u!1001 &307631676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11989,6 +11932,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeBomb (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12244,6 +12199,18 @@ PrefabInstance:
     - target: {fileID: 7159586630976420861, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
       propertyPath: m_Name
       value: TimeBomb (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12543,63 +12510,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
---- !u!1001 &854262239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 12.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486455475028892743, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_Name
-      value: FarFutureDroneSpawner (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
 --- !u!1001 &894866684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13004,63 +12914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf4da819308b524993c3f4424faab86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamagePart
---- !u!1001 &1045212599
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 25.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486455475028892743, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_Name
-      value: FarFutureDroneSpawner (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
 --- !u!1001 &1073720266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13722,6 +13575,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeBomb (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13803,68 +13668,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeBomb (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245972997360640100, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5effefd4893e0bb4c9a20b77c5e86a3a, type: 3}
---- !u!1001 &1415019538
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 23.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335035275478717850, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486455475028892743, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
-      propertyPath: m_Name
-      value: FarFutureDroneSpawner (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04d012aaec26ba3498f3fd1b83c924e2, type: 3}
 --- !u!1001 &1422113545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15691,13 +15511,9 @@ SceneRoots:
   - {fileID: 333195779}
   - {fileID: 1519307176}
   - {fileID: 894866684}
-  - {fileID: 1045212599}
   - {fileID: 1422113545}
-  - {fileID: 1415019538}
   - {fileID: 1764509613}
-  - {fileID: 854262239}
   - {fileID: 1885210968}
-  - {fileID: 281387114}
   - {fileID: 29050099}
   - {fileID: 574364029}
   - {fileID: 1548551593}
